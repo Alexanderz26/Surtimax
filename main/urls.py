@@ -20,7 +20,7 @@ from main.views import inicioAdmin
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('Adm/', inicioAdmin , name="inicioAdmin"),
+    path('adm/', inicioAdmin , name="inicio-admin"),
     path('usuarios/', include('usuarios.urls')),
 
 ]
