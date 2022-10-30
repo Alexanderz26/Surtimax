@@ -33,13 +33,19 @@
 
                         {% include 'partials/navbar.html' %}
                         {% include 'partials/sidebar.html' %}
+                        
+                        <!-- Content Wrapper. Contains page content -->
+                        <div class="content-wrapper">
                         {% include 'partials/header.html' %}
-                        {% include 'partials/main.html' %}
-                        {% include 'partials/footer.html' %}
-
                         {% block contenido%}
 
                         {% endblock contenido%}
+                        </div> 
+                        <!-- /.Content-Wrapper.-->
+                        {% include 'partials/footer.html' %}
+
+                       
+                       
 
 
 

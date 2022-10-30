@@ -8,7 +8,7 @@ def inicio(request):
     return render(request,'login.html',context)
 
 def inicioAdmin(request):
-    titulo="Inicio"
+    titulo="Panel de control"
     context = {  
         'titulo': titulo   
     }
