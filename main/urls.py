@@ -23,6 +23,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('adm/', inicioAdmin , name="inicio-admin"),
     path('usuarios/', include('usuarios.urls')),
-    path('', views.holamundo)
+    
+
+   
 
 ]
