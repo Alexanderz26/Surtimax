@@ -43,14 +43,12 @@
                         </div> 
                         <!-- /.Content-Wrapper.-->
                         {% include 'partials/footer.html' %}
-
-                       
-                       
-
-
-
-                </div>
-
+                    </div>
+                    
+                    {% block blockname %}
+                        {% include 'partials/js.html' %}
+                    {% endblock blockname %}
+                        
 
         </body>
 </html>
