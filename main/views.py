@@ -1,10 +1,11 @@
 from django.shortcuts import render
 
 def inicioAdmin(request):
-   
-    context = {     
+   titulo="panel de control"
+   context = {  
+        'titulo':titulo   
     }
-    return render(request,'index.html',context)
+   return render(request,'index.html',context)
 
 
 

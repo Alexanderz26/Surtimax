@@ -1,0 +1,14 @@
+
+<h1>Crear-Producto</h1>
+<div class="container">
+{% load crispy_forms_tags %}
+
+<form action="" method="POST" >
+    {{form|crispy}}
+    {% csrf_token %}
+     <input type="submit" value="Registrar">
+</div>
+</form>
+
+    
+    

@@ -1,0 +1,34 @@
+<h1>productos</h1>
+
+{% block contenido %}
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Categoria</th>
+        <th scope="col">Presentacón</th>
+        <th scope="col">Marca</th>
+        <th scope="col">CodBarras</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Descripción</th>
+
+
+      </tr>
+    </thead>
+    <tbody>
+        
+        {% for productos in productos %}
+        <tr>
+            <th scope="row">{{productos.categoria}}</th>
+            <td>{{productos.marca}}</td>
+            <td>{{productos.presentacion}}</td>
+            <td>{{productos.codigoBarras}}</td>
+            <td>{{productos.nombre}}</td>
+            <td>{{productos.descripcion}}</td>
+          </tr>
+        {% endfor %}
+            
+      
+    </tbody>
+  </table>
+{% endblock contenido %}
+    
