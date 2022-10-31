@@ -23,5 +23,5 @@ urlpatterns = [
     path('', inicio , name="inicio"),
     path('adm/', inicioAdmin , name="inicio-admin"),
     path('usuarios/', include('usuarios.urls')),
-
+    
 ]
