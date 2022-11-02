@@ -1,0 +1,8 @@
+{% extends 'partials/body.html' %}
+{% block contenido %}
+<form action="" method="POST">
+    {{form}}
+    {% csrf_token %}
+    <input type="submit" value="Registrar">
+</form>
+{% endblock contenido %}

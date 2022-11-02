@@ -1,5 +1,209 @@
 {% extends 'partials/body.html' %}
 {% load static %}
+
 {% block contenido %}
-<h1></h1>
+   <!-- Main content -->
+   <section class="content">
+    <div class="container-fluid">
+        <!-- Small boxes (Stat box) -->
+        <div class="row">
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-info">
+                    <div class="inner">
+                        
+                        <h3>Usuarios</h3>
+
+                        <p>Users</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-person"></i>
+                    </div>
+                    <a href="{% url 'usuarios' %}" class="small-box-footer">Más info <i
+                            class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-success">
+                    <div class="inner">
+                        <h3>Productos</h3>
+
+                        <p>Products</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-ios-cart"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">Más info <i
+                            class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-warning">
+                    <div class="inner">
+                        <h3>Compras</h3>
+
+                        <p>Shopping</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-bag"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">Más info <i
+                            class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-danger">
+                    <div class="inner">
+                        <h3>Proveedores</h3>
+
+                        <p>Providers</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-ios-people"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">Más info <i
+                            class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-secondary">
+                    <div class="inner">
+                        <h3>Marcas</h3>
+
+                        <p>Marks</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-ios-pricetags-outline"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">Más info <i
+                            class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-primary">
+                    <div class="inner">
+                        <h3>Devoluciones</h3>
+
+                        <p>Returns</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-arrow-return-right"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">Más info <i
+                            class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-success">
+                    <div class="inner">
+                        <h3>Reportes</h3>
+
+                        <p>Reports</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-clipboard"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">Más info <i
+                            class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-warning">
+                    <div class="inner">
+                        <h3>Clientes</h3>
+
+                        <p>Customers</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-person-stalker"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">Más info <i
+                            class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-danger">
+                    <div class="inner">
+                        <h3>Ventas</h3>
+
+                        <p>Sales</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-arrow-graph-up-right"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">Más info <i
+                            class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-secondary">
+                    <div class="inner">
+                        <h3>Categorías</h3>
+
+                        <p>Categories</p>
+                    </div>
+                    <div class="icon">
+                        <i class=" ion-ios-list"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">Más info <i
+                            class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-primary">
+                    <div class="inner">
+                        <h3>Presentación</h3>
+
+                        <p>presentation</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion-ios-pie"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">Más info <i
+                            class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-success">
+                    <div class="inner">
+                        <h3>Kardex</h3>
+
+                        <p>Kardex</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion-ios-paper"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">Más info <i
+                            class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+        <!-- Main row -->
+        
+    </div><!-- /.container-fluid -->
+</section>
+<!-- /.content -->
 {% endblock contenido %}
