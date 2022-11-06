@@ -28,7 +28,22 @@ def productos_crear(request):
         'form': form
     }
     return render(request,'productos/productos-crear.html',context)
+
+def categorias(request):
+    titulo="categorias"
+
+    context={
+        'titulo':titulo
+    }
+    return render(request,'productos/categorias.html',context)
    
+
+
+
+   
+
+
+
 
 
 

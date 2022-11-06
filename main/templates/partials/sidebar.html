@@ -53,12 +53,47 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="pages/gallery.html" class="nav-link">
+                    <a href="{% url 'productos'%}" class="nav-link">
                         <i class="nav-icon fas fa-box-open"></i>
                         <p>
                             Almacén
-                        </p>
-                    </a>
+                            <i class="fas fa-angle-left right"></i>
+
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="{% url 'productos'%}" class="nav-link">
+                <i class="nav-icon fas fa-shopping-basket"></i>
+                <p>Ver Productos</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'productos-crear'%}" class="nav-link">
+                <i class="nav-icon fas fa-plus-square"></i>
+                <p>Crear Productos</p>
+              </a>
+            </li>
+             <li class="nav-item">
+            <a href="{% url 'categorias'%}" class="nav-link">
+              <i class="nav-icon fas fa-thumbtack"></i>
+              <p>categorias</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'productos-crear'%}" class="nav-link">
+              <i class="nav-icon fas fa-tags"></i>
+              <p>Marca</p>
+            </a>
+          </li>
+           <li class="nav-item">
+            <a href="{% url 'productos-crear'%}" class="nav-link">
+              <i class="nav-icon fas fa-chart-pie"></i>
+              <p>Presentación</p>
+            </a>
+          </li>
+        </ul>
+        </li>
                 </li>
                 <li class="nav-item">
                     <a href="pages/kanban.html" class="nav-link">
@@ -72,7 +107,7 @@
                     <a href="pages/kanban.html" class="nav-link">
                         <i class="nav-icon fas fa-chart-line"></i>
                         <p>
-                            Ventas
+                      Ventas
                         </p>
                     </a>
                 </li>

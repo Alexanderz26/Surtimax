@@ -1,5 +1,4 @@
-<h1>productos</h1>
-
+{% extends 'partials/body.html' %}
 {% block contenido %}
 <table class="table">
     <thead>
@@ -15,7 +14,7 @@
       </tr>
     </thead>
     <tbody>
-        
+     
         {% for productos in productos %}
         <tr>
             <th scope="row">{{productos.categoria}}</th>
