@@ -36,6 +36,23 @@ def categorias(request):
         'titulo':titulo
     }
     return render(request,'productos/categorias.html',context)
+
+def marca(request):
+    titulo="marca"
+
+    context={
+        'titulo':titulo
+    }
+    return render(request,'productos/marca.html',context)
+
+def presentacion(request):
+    titulo="presentación"
+
+    context={
+        'titulo':titulo
+    }
+    return render(request,'productos/presentacion.html',context)
+
    
 
 
