@@ -1,4 +1,52 @@
 {% extends 'partials/body.html' %}
-{% block contenido %}
 
+{% block contenido %}
+ <!-- /.card -->
+ <div class="card">
+    <div class="card-header">
+      <h3 class="card-title">DataTable with default features</h3>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+      <table id="example1" class="table table-bordered table-striped">
+        <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Tipo de Documento</th>
+          <th>Número de documenton</th>
+          <th>Fecha de nacimiento</th>
+          <th>Tipo de Genero</th>
+          <th>Dirección</th>
+          <th>Teléfono</th>
+          <th>Correo</th>
+          <th>Rol</th>
+        </tr>
+        </thead>
+        <tbody>
+
+
+            {% for usuario in usuarios  %}
+            <tr>
+                <td>{{usuario.nombre}}</td>
+                <td>{{usuario.apellidos}}</td>
+                <td>{{usuario.tipoDocumento}}</td>
+                <td>{{usuario.documento}}</td>
+                <td>{{usuario.fecha_nacimiento}}</td>
+                <td>{{usuario.genero}}</td>
+                <td>{{usuario.direccion}}</td>
+                <td>{{usuario.telefono}}</td>
+                <td>{{usuario.email}}</td>
+                <td>{{usuario.rol}}</td>  
+            </tr>
+            {% endfor %}
+
+
+        </tbody>      
+      </table>
+    </div>
+    <!-- /.card-body -->
+  </div>
+
+  <!-- /.card -->
 {% endblock contenido %}
