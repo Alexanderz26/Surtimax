@@ -13,7 +13,7 @@ def inicioAdmin(request):
         'titulo': titulo   
     }
     return render(request,'index.html',context)
-
+    
 def categorias(request):
     titulo="categorias"
 

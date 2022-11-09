@@ -1,5 +1,6 @@
 {% extends 'partials/body.html' %}
 {% block contenido %}
+<div class="container">
 <table class="table">
     <thead>
       <tr>
@@ -9,25 +10,24 @@
         <th scope="col">CodBarras</th>
         <th scope="col">Nombre</th>
         <th scope="col">Descripción</th>
-
-
       </tr>
     </thead>
-    <tbody>
-     
-        
-        <tr>
-            <th scope="row">{{productos.categoria}}</th>
-            <td>{{productos.marca}}</td>
-            <td>{{productos.presentacion}}</td>
-            <td>{{productos.codigoBarras}}</td>
-            <td>{{productos.nombre}}</td>
-            <td>{{productos.descripcion}}</td>
+  <tbody>
+    
+    {% for producto in productos %}
+      <tr>
+            <td>{{producto.categoria}}</td>
+            <td>{{producto.marca}}</td>
+            <td>{{producto.presentacion}}</td>
+            <td>{{producto.codigoBarras}}</td>
+            <td>{{producto.nombre}}</td>
+            <td>{{producto.descripcion}}</td>
           </tr>
-        
-            
+    {% endfor %}
       
+        
     </tbody>
   </table>
+</div>
 {% endblock contenido %}
     

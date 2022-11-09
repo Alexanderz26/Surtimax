@@ -28,12 +28,4 @@ urlpatterns = [
     path('productos/categorias',categorias,name='categorias'),
     path('productos/marca',marca,name='marca'),
     path('productos/presentacion',presentacion,name='presentacion'),
-
-
-
-   
-
-    
-
-    
-]
+    ]
