@@ -1,8 +1,11 @@
 {% extends 'partials/body.html' %}
+{% load crispy_forms_tags %}
 {% block contenido %}
+<div class="container">
 <form action="" method="POST">
-    {{form}}
+    {{form|crispy}}
     {% csrf_token %}
     <input type="submit" value="Registrar">
 </form>
+</div>
 {% endblock contenido %}
