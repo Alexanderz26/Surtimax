@@ -1,9 +1,8 @@
 from multiprocessing import context
-
 from django.shortcuts import redirect, render
-
 from usuarios.forms import UsuarioForm
 from usuarios.models import Usuario
+from django.contrib import messages
 
 
 # Create your views here.
@@ -22,6 +21,9 @@ def usuarios_crear(request):
         form= UsuarioForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(
+                request,f"Se agregó el usuario {request.POST['nombre']} exitosamente!"
+            )
             return redirect ('usuarios')
         else:
             print ("Error")
@@ -42,6 +44,9 @@ def usuarios_editar(request, pk):
         form= UsuarioForm(request.POST,instance=usuario)
         if form.is_valid():
             form.save()
+            messages.success(
+                request,f"Se edicto el usuario {request.POST['nombre']} exitosamente!"
+            )
             return redirect ('usuarios')
         else:
             print ("Error al guardar")
@@ -60,9 +65,11 @@ def usuarios_eliminar(request, pk):
     usuarios= Usuario.objects.all()
 
     Usuario.objects.filter(id=pk).update(
-            estado='0'
+            estado='0' 
         )  
+    
     return redirect('usuarios')
+    
 
     context={
         'titulo': titulo,
