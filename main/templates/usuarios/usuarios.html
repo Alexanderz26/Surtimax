@@ -11,7 +11,8 @@
   <!-- /.card-header -->
   <div class="card-body">
     <table id="tabla-general" class="table table-bordered table-striped">
-      <thead>
+      
+      <thead >
         <tr>
           <th>Nombre</th>
           <th>Apellido</th>
@@ -23,13 +24,17 @@
           <th>Teléfono</th>
           <th>Correo</th>
           <th>Rol</th>
+          <th>Acciones</th>
         </tr>
       </thead>
       <tbody>
 
 
         {% for usuario in usuarios %}
-        <tr>
+        
+           
+          {% if usuario.estado == '1' %}
+          <tr>
           <td>{{usuario.nombre}}</td>
           <td>{{usuario.apellidos}}</td>
           <td>{{usuario.tipoDocumento}}</td>
@@ -40,15 +45,27 @@
           <td>{{usuario.telefono}}</td>
           <td>{{usuario.email}}</td>
           <td>{{usuario.rol}}</td>
-        </tr>
+          <td><a class="btn btn-primary" href="{% url 'usuarios-editar' usuario.id %}"><i class="fas fa-edit"></i></a>
+            <a class="btn btn-danger" href="{% url 'usuarios-eliminar' usuario.id %}"><i class="fas fa-trash-alt"></i></a>
+          </td>
+          </tr>
+          {% endif %}
+            
+          
+       
+        
+        
+        
         {% endfor %}
 
 
       </tbody>
     </table>
+  
   </div>
   <!-- /.card-body -->
 </div>
 
 {% endblock contenido %}
+
 
