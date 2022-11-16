@@ -7,5 +7,6 @@ urlpatterns = [
     path('usuarios-crear/', usuarios_crear,name="usuarios-crear"),
     path('usuarios-editar/<int:pk>/',usuarios_editar,name="usuarios-editar"),
     path('usuarios-eliminar/<int:pk>/',usuarios_eliminar,name="usuarios-eliminar"),
+    
 ]
     

@@ -5,3 +5,8 @@ class UsuarioForm(ModelForm):
     class Meta:
         model= Usuario
         exclude=['estado']
+
+class UsuarioUpdateForm(ModelForm):
+    class Meta:
+        model= Usuario
+        exclude=['estado','nit']
