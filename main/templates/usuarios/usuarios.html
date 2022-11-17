@@ -50,7 +50,7 @@
                 <form action="" method="POST" class="col-4">
                     {% csrf_token %}
                     <input type="hidden" name="pk" value="{{usuario.id}}">
-                    <button class="btn btn-primary btn-block" name="form-editar">
+                    <button class="btn btn-primary m-1 p-1" name="form-editar">
                         <i class="fas fa-edit"></i>
                     </button>
                 </form>
@@ -58,7 +58,7 @@
                     {% csrf_token %}
                     <input type="hidden" name="pk" value="{{usuario.id}}">
                    
-                    <button class="btn btn-danger btn-block" name="form-eliminar">
+                    <button class="btn btn-danger m-1 p-1" name="form-eliminar">
                         <i class="fas fa-trash-alt"></i>
                     </button>
                 </form>
