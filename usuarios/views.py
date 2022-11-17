@@ -4,34 +4,10 @@ from usuarios.forms import UsuarioForm, UsuarioUpdateForm
 from usuarios.models import Usuario
 from django.contrib import messages
 
-
-# Create your views here.
-def usuarios (request):
-    titulo="Ver Usuarios"
-    usuarios= Usuario.objects.all()
-    context={
-        'titulo': titulo,
-        'usuarios': usuarios
-    }
-    return render(request, 'usuarios/usuarios.html', context)
-# Crear usuarios.
-def usuarios_crear(request, modal_status='hid'):
-    titulo="Usuarios - Crear"
-    usuarios_crear= Usuario.objects.filter(estado='1')
+def usuarios_crear(request):
+    titulo='Usuarios - Crear'
     
-    ###cuerpo del modal ###
-    model_title= ""
-    model_txt= ""
-    model_submit= ""
-    #######################
-    pk_usuario = ""
-    tipo= None
-    from_update= None
-    from =UsuarioForm()
-
-#####################configuracion modal de crear ################################################################
-
-    if request.method == "POST" and 'form-crear' in request.POST:
+    if request.method == "POST":
         form= UsuarioForm(request.POST)
         if form.is_valid():
             form.save()
@@ -41,6 +17,33 @@ def usuarios_crear(request, modal_status='hid'):
            messages.error(
             request, "Error al agregar el usuario"
            )
+    else:
+        form= UsuarioForm()
+    context={
+        'form':form,
+        'titulo':titulo
+
+    }
+    return render (request,"usuarios/usuarios-crear.html",context)
+
+# Crear usuarios.
+def usuarios(request, modal_status='hid'):
+    titulo="Usuarios"
+    usuarios= Usuario.objects.filter(estado='1')
+    
+    ###cuerpo del modal ###
+    modal_title= ""
+    modal_txt= ""
+    modal_submit= ""
+    #######################
+    pk_usuario = ""
+    tipo= None
+    form_update= None
+    form =UsuarioForm()
+
+#####################configuracion modal de crear ################################################################
+
+    
 #####################configuracion modal de eliminar ################################################################
 
     if request.method == "POST" and 'form-eliminar' in request.POST:
@@ -77,12 +80,12 @@ def usuarios_crear(request, modal_status='hid'):
                 estado='0'
             )
             messages.success(
-                request,f"Se eliminó el usuario {usuario.nombre} exitosamente!"
+                request,f"Se eliminó el usuario  exitosamente!"
             )
             return redirect('usuarios')
 
         if request.POST['tipo'] == 'editar':
-            pk_usuario = request.´POST['modal-pk']
+            pk_usuario = request.POST['modal-pk']
             usuario = Usuario.objects.get(id=pk_usuario)
             form_update=UsuarioUpdateForm(request.POST, instance=usuario)
             
@@ -98,7 +101,7 @@ def usuarios_crear(request, modal_status='hid'):
         'usuarios': usuarios,
         'modal_status' :modal_status,
         'modal_submit' :modal_submit,
-        'modal_title' :modal_submit,
+        'modal_title' :modal_title,
         'modal_txt' :modal_txt,
         'pk': pk_usuario,
         'tipo' : tipo,
@@ -106,7 +109,7 @@ def usuarios_crear(request, modal_status='hid'):
 
 
     }
-    return render(request, 'usuarios/usuarios-crear.html', context)
+    return render(request, 'usuarios/usuarios.html', context)
 
 # Crear Editar.
 def usuarios_editar(request, pk):

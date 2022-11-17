@@ -45,20 +45,38 @@
           <td>{{usuario.telefono}}</td>
           <td>{{usuario.email}}</td>
           <td>{{usuario.rol}}</td>
-          <td><a class="btn btn-primary" href="{% url 'usuarios-editar' usuario.id %}"><i class="fas fa-edit"></i></a>
-            <a class="btn btn-danger" href="{% url 'usuarios-eliminar' usuario.id %}"><i class="fas fa-trash-alt"></i></a>
-          </td>
+          <td>
+            <div class="row">
+                <form action="" method="POST" class="col-4">
+                    {% csrf_token %}
+                    <input type="hidden" name="pk" value="{{usuario.id}}">
+                    <button class="btn btn-primary btn-block" name="form-editar">
+                        <i class="fas fa-edit"></i>
+                    </button>
+                </form>
+                <form action="" method="POST" class="col-4">
+                    {% csrf_token %}
+                    <input type="hidden" name="pk" value="{{usuario.id}}">
+                   
+                    <button class="btn btn-danger btn-block" name="form-eliminar">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </form>
+
+            </div>
+        </td>
           </tr>
           {% endif %}
       
         {% endfor %}
-
+ 
 
       </tbody>
     </table>
   
   </div>
   <!-- /.card-body -->
+  <input type="hidden" name="modal-status" id="modal-status" value="{{modal_status}}">
 </div>
 
 {% endblock contenido %}

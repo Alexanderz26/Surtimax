@@ -18,7 +18,8 @@
 
 
         {% endblock styleheet %}
-
+        <!-- jQuery -->
+        <script src="{% static 'jquery/jquery.min.js' %}"></script>
         <!-- Google Font: Source Sans Pro -->
         <link rel="stylesheet"
                 href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -52,6 +53,7 @@
                         {% block contenido%}
 
                         {% endblock contenido%}
+                        {% include 'partials/modal.html' %}
                         <!-- /.Alert mensaje.-->
                         {% if messages %}
                         {% for message in messages %}
@@ -66,8 +68,6 @@
 
                         <!-- /mensages o alertas.-->
                         
-                                       
-
                         {% include 'partials/js.html' %}
                         {% block blockname %}
                         {% endblock blockname %}
