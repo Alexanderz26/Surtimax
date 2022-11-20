@@ -4,19 +4,50 @@ from usuarios.forms import UsuarioForm, UsuarioUpdateForm
 from usuarios.models import Usuario
 from django.contrib import messages
 
+### logic
+from django.contrib.auth.hashers import make_password
+from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
+
+@login_required(login_url='inicio')
 def usuarios_crear(request):
     titulo='Usuarios - Crear'
     
     if request.method == "POST":
-        form= UsuarioForm(request.POST)
+        form= UsuarioForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
-            return redirect ('usuarios')
+            if not User.objects.filter(username=request.POST['documento']):
+                user = User.objects.create_user('nombre','email@email','pass')
+                user.username= request.POST['documento']
+                user.first_name= request.POST['nombre']
+                user.last_name= request.POST['apellidos']
+                user.email= request.POST['email']
+                user.password=make_password("@" + request.POST['nombre  '][0] + request.POST['apellidos'][0] + request.POST['documento'][-4:])
+                user.save()
+            else:
+                user=User.objects.get(username=request.POST['documento'])
+            #####creacion por datos####
+            usuario= Usuario.objects.create(
+                nombre=request.POST['nombre'],
+                apellidos=request.POST['apellidos'],
+                foto=form.cleaned_data.get('foto'),
+                tipoDocumento=request.POST['tipoDocumento'],
+                documento=request.POST['documento'],
+                fecha_nacimiento=request.POST['fecha_nacimiento'],
+                genero=request.POST['genero'],
+                direccion=request.POST['direccion'],
+                telefono=request.POST['telefono'],
+                email=request.POST['email'],
+                rol=request.POST['rol'],
+                user=user,
+                
+            )
+            return redirect('usuarios')
+            
+            
         else:
-           form= UsuarioForm(request.POST)
-           messages.error(
-            request, "Error al agregar el usuario"
-           )
+           form= UsuarioForm(request.POST,request.FILES)
+       
     else:
         form= UsuarioForm()
     context={
@@ -109,42 +140,42 @@ def usuarios(request, modal_status='hid'):
     return render(request, 'usuarios/usuarios.html', context)
 
 # Crear Editar.
-def usuarios_editar(request, pk):
-    titulo="Usuarios - Editar"
-    usuario=Usuario.objects.get(id=pk)
-    if request.method == "POST":
-        form= UsuarioForm(request.POST,instance=usuario)
-        if form.is_valid():
-            form.save()
-            messages.success(
-                request,f"Se edicto el usuario {request.POST['nombre']} exitosamente!"
-            )
-            return redirect ('usuarios')
-        else:
-            print ("Error al guardar")
-    else:
-        form= UsuarioForm(instance=usuario)    
+# def usuarios_editar(request, pk):
+#     titulo="Usuarios - Editar"
+#     usuario=Usuario.objects.get(id=pk)
+#     if request.method == "POST":
+#         form= UsuarioForm(request.POST,instance=usuario)
+#         if form.is_valid():
+#             form.save()
+#             messages.success(
+#                 request,f"Se edicto el usuario {request.POST['nombre']} exitosamente!"
+#             )
+#             return redirect ('usuarios')
+#         else:
+#             print ("Error al guardar")
+#     else:
+#         form= UsuarioForm(instance=usuario)    
 
-    context={
-        'titulo': titulo,
-        'form': form
-    }
-    return render(request, 'usuarios/usuarios-crear.html', context)
+#     context={
+#         'titulo': titulo,
+#         'form': form
+#     }
+#     return render(request, 'usuarios/usuarios-crear.html', context)
 
-# Crear Eliminar.
-def usuarios_eliminar(request, pk):
-    titulo="Usuarios - Eliminar"
-    usuarios= Usuario.objects.all()
+# # Crear Eliminar.
+# def usuarios_eliminar(request, pk):
+#     titulo="Usuarios - Eliminar"
+#     usuarios= Usuario.objects.all()
 
-    Usuario.objects.filter(id=pk).update(
-            estado='0' 
-        )  
+#     Usuario.objects.filter(id=pk).update(
+#             estado='0' 
+#         )  
     
-    return redirect('usuarios')
+#     return redirect('usuarios')
     
 
-    context={
-        'titulo': titulo,
-        'usuarios': usuarios,
-    }
-    return render(request, 'usuarios/usuarios-crear.html', context)
+#     context={
+#         'titulo': titulo,
+#         'usuarios': usuarios,
+#     }
+#     return render(request, 'usuarios/usuarios-crear.html', context)

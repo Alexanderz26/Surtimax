@@ -32,10 +32,10 @@
 
 
         {% for usuario in usuarios %}
-        
+        <tr>
            
           {% if usuario.estado == '1' %}
-          <tr>
+          
           <td class="align middle text-center"><img class="rounded-circle" src="{{ MEDIA_URL }}{{usuario.foto.url}}" alt="" width="50" height="50"></td>
           <td>{{usuario.nombre}}</td>
           <td>{{usuario.apellidos}}</td>
@@ -67,9 +67,9 @@
 
             </div>
         </td>
-          </tr>
+          
           {% endif %}
-      
+        </tr>
         {% endfor %}
  
 

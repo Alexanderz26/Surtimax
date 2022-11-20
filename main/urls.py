@@ -16,18 +16,27 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls import handler404
-from main.views import error_404, inicio, inicioAdmin
+from main.views import error_404, inicioAdmin
 
 ####### Importes para subir imágenes #######
 from django.conf import settings
 from django.conf.urls.static import static
 ############################################
+####### Importes Logic #######
+from main.views import logout_user,loggedIn
+from django.contrib.auth.views import LoginView as login
+############################################
 
 handler404=error_404
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', inicio , name="inicio"),
+    # reemplazaa path('', inicio , name="inicio"),
+    path('',login.as_view(),name='inicio'),
     path('adm/', inicioAdmin , name="inicio-admin"),
     path('usuarios/', include('usuarios.urls')),
-        
+    
+    path('loggedin/',loggedIn,name="inicio-sesion"),
+    path('logout/',logout_user,name="logout"),
+    #path("select2/", include("django_select2.urls")),
+
 ] + static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)

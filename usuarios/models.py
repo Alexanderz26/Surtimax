@@ -1,5 +1,6 @@
 from django.utils.translation import gettext_lazy as _
 from django.db import models
+#from django.contrib.auth.models import User
 
 # Create your models here.
 # ENUM"CC", "CE", "PASAPORTE"
@@ -22,7 +23,8 @@ class Usuario(models.Model):
     genero=models.CharField(max_length=2, choices=Genero.choices, default=Genero.F, verbose_name="Tipo de Genero")
     direccion=models.CharField(max_length=100,verbose_name="Dirección")
     telefono=models.CharField(max_length=20,verbose_name="Teléfono")
-    email=models.CharField(max_length=50,verbose_name="Correo")
+    #email=models.CharField(max_length=50,verbose_name="Correo")
+    email= models.EmailField(max_length=150, verbose_name='Correo')
     class Rol(models.TextChoices):
         Administrador='Administrador', _('Administrador')
         Empleado='Empleado', _('Empleado')     
@@ -33,5 +35,7 @@ class Usuario(models.Model):
         ACTIVO='1', _('Activo')
         INACTIVO='0', _('Inactivo')     
     estado=models.CharField(max_length=1, choices=Estado.choices, default=Estado.ACTIVO, verbose_name="Estado")
+    #user=models.ForeignKey(User, on_delete= models.CASCADE)
+
     def __str__(self)->str:
         return "%s %s" %(self.nombre, self.apellidos)  
