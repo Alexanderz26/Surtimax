@@ -8,6 +8,7 @@ from django.db import models
 class Usuario(models.Model):
     nombre=models.CharField(max_length=45, verbose_name="Nombre")
     apellidos=models.CharField(max_length=45, verbose_name="Apellidos")
+    foto=models.ImageField(upload_to='images/usuarios',blank=True, default='images/usuarios/default.jpg')
     class TipoDocumento(models.TextChoices):
         CC='CC', _('Cédula de Ciudadanía')
         CE='CE', _('Cédula de Extranjería')
@@ -32,5 +33,5 @@ class Usuario(models.Model):
         ACTIVO='1', _('Activo')
         INACTIVO='0', _('Inactivo')     
     estado=models.CharField(max_length=1, choices=Estado.choices, default=Estado.ACTIVO, verbose_name="Estado")
-    def __str__(self):
-        return self.nombre
+    def __str__(self)->str:
+        return "%s %s" %(self.nombre, self.apellidos)  

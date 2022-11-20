@@ -18,6 +18,11 @@ from django.urls import path, include
 from django.conf.urls import handler404
 from main.views import error_404, inicio, inicioAdmin
 
+####### Importes para subir imágenes #######
+from django.conf import settings
+from django.conf.urls.static import static
+############################################
+
 handler404=error_404
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,4 +30,4 @@ urlpatterns = [
     path('adm/', inicioAdmin , name="inicio-admin"),
     path('usuarios/', include('usuarios.urls')),
         
-]
+] + static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)

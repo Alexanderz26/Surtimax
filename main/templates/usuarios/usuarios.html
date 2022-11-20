@@ -14,6 +14,7 @@
       
       <thead >
         <tr>
+          <th class="col text-center">Foto</th>
           <th>Nombre</th>
           <th>Apellido</th>
           <th>Tipo de Documento</th>
@@ -35,6 +36,7 @@
            
           {% if usuario.estado == '1' %}
           <tr>
+          <td class="align middle text-center"><img class="rounded-circle" src="{{ MEDIA_URL }}{{usuario.foto.url}}" alt="" width="50" height="50"></td>
           <td>{{usuario.nombre}}</td>
           <td>{{usuario.apellidos}}</td>
           <td>{{usuario.tipoDocumento}}</td>

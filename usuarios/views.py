@@ -26,7 +26,7 @@ def usuarios_crear(request):
     }
     return render (request,"usuarios/usuarios-crear.html",context)
 
-# Crear usuarios.
+# Filtro usuarios.
 def usuarios(request, modal_status='hid'):
     titulo="Usuarios"
     usuarios= Usuario.objects.filter(estado='1')
@@ -41,9 +41,6 @@ def usuarios(request, modal_status='hid'):
     form_update= None
     form =UsuarioForm()
 
-#####################configuracion modal de crear ################################################################
-
-    
 #####################configuracion modal de eliminar ################################################################
 
     if request.method == "POST" and 'form-eliminar' in request.POST:
@@ -53,7 +50,7 @@ def usuarios(request, modal_status='hid'):
 
         ## Cuerpo del modal ##
         modal_title = f"Eliminar {usuario}"
-        modal_txt=f"eliminar la usuario {usuario}"
+        modal_txt=f"eliminar el usuario {usuario}"
         modal_submit="Eliminar"
         ##############################
 
