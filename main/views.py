@@ -14,10 +14,10 @@ from django.views.defaults import page_not_found
 
 def inicioAdmin(request):
     titulo="Panel de control"
-    context = {  
+    context= {  
         'titulo': titulo   
     }
-    return render(request,'index.html',context)
+    return render(request,'index.html', context)
 
 def error_404(request,exception):
     return page_not_found(request, '404.html')
