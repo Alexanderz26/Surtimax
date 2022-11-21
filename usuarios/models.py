@@ -1,5 +1,6 @@
 from django.utils.translation import gettext_lazy as _
 from django.db import models
+###logic user###3
 from django.contrib.auth.models import User
 
 # Create your models here.
@@ -35,7 +36,8 @@ class Usuario(models.Model):
         ACTIVO='1', _('Activo')
         INACTIVO='0', _('Inactivo')     
     estado=models.CharField(max_length=1, choices=Estado.choices, default=Estado.ACTIVO, verbose_name="Estado")
+    #### logic ####
     user=models.ForeignKey(User, on_delete= models.CASCADE)
-
+#####aler sale los nombres
     def __str__(self)->str:
         return "%s %s" %(self.nombre, self.apellidos)  

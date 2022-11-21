@@ -10,6 +10,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
 @login_required(login_url='inicio')
+
+
 def usuarios_crear(request):
     titulo='Usuarios - Crear'
     
@@ -17,12 +19,12 @@ def usuarios_crear(request):
         form= UsuarioForm(request.POST, request.FILES)
         if form.is_valid():
             if not User.objects.filter(username=request.POST['documento']):
-                user = User.objects.create_user('nombre','email@email','pass')
+                user = User.objects.create_user('nombres','email@email','pass')
                 user.username= request.POST['documento']
                 user.first_name= request.POST['nombre']
                 user.last_name= request.POST['apellidos']
                 user.email= request.POST['email']
-                user.password=make_password("@" + request.POST['nombre  '][0] + request.POST['apellidos'][0] + request.POST['documento'][-4:])
+                user.password=make_password("@" + request.POST['nombre'][0] + request.POST['apellidos'][0] + request.POST['documento'][-4:])
                 user.save()
             else:
                 user=User.objects.get(username=request.POST['documento'])
