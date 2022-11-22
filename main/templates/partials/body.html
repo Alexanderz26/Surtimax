@@ -34,7 +34,7 @@
         <link rel="stylesheet" href="{% static 'datatables-responsive/css/responsive.bootstrap4.min.css' %}">
         <link rel="stylesheet" href="{% static 'datatables-buttons/css/buttons.bootstrap4.min.css' %}">
         <!-- Alert -->
-        <link rel="stylesheet" href="{% static 'toastr/toastr.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/jquery.toast.css' %}">
         <!-- Logo pagina -->
         <link rel="shortcut icon" href="{% static 'img/IMAGENMAX 320X320 COSTA SECA 3.png' %}">
         <title>Surtimax</title>
@@ -56,24 +56,18 @@
                         {% include 'partials/modal.html' %}
                         </div>
                         <!-- /.Alert mensaje.-->
-                        {% if messages %}
-                        {% for message in messages %}
-                        <script type="text/javascript">
-                                toastr.{{message.tags}} ("{{ message }}");
-                        </script>   
-                        {% endfor %}
-                        
-                        {% endif %} 
-                        <!-- /.Content-Wrapper.-->
+                        {% include 'partials/toast.html' %}
+                </div>  
+        </div>     <!-- /.Content-Wrapper.-->
                         {% include 'partials/footer.html' %}
-                </div>        
+                       
                         <!-- /mensages o alertas.-->
                         
                         {% include 'partials/js.html' %}
 
-                        {% block blockname %}
+                        {% block javascript %}
                         
-                        {% endblock blockname %}
+                        {% endblock javascript %}
 
 
 </body>
