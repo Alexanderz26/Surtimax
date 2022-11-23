@@ -9,6 +9,8 @@ class Estado(models.TextChoices):
         INACTIVO ="0",_('INACTIVO')
 estado =models.CharField(max_length=1, choices=Estado.choices,default=Estado.ACTIVO,verbose_name="Estado")
 
+def __str__(self)->str:
+ return "%s"%(self.nombre)
 
 class Categoria(models.Model):
        nombre=models.CharField(max_length=50,verbose_name="Nombre")
@@ -33,7 +35,7 @@ estado =models.CharField(max_length=1, choices=Estado.choices,default=Estado.ACT
 class Productos(models.Model):
      #categoria=models.ForeignKey(Categoria,on_delete=models.CASCADE,verbose_name="Categorias")
      #marca=models.ForeignKey(Marca,on_delete=models.CASCADE,verbose_name="Marca")
-    # presentacion=models.ForeignKey(Presentacion,on_delete=models.CASCADE,verbose_name="Presentación")
+     #presentacion=models.ForeignKey(Presentacion,on_delete=models.CASCADE,verbose_name="Presentación")
      codigoBarras=models.CharField(max_length=50,verbose_name="CODBARRAS")
      nombre=models.CharField(max_length=50,verbose_name="Nombre")
      descripcion=models.CharField(max_length=1024,verbose_name="Descripción")

@@ -1,10 +1,90 @@
 {% extends 'partials/body.html' %}
-
+{% load static %}
+{% block stylesheet %}
+<!-- DataTables -->
+<!--<link rel="stylesheet" href="{% static 'datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="{% static 'datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="{% static 'datatables-buttons/css/buttons.bootstrap4.min.css"> -->
+{% endblock stylesheet %}
 
 {% block contenido %}
+<div class="row " ><div class="col-sm-12 col-md-6"><div class="dt-buttons btn-group flex-wrap">               <button class="btn btn-secondary buttons-copy buttons-html5" tabindex="0" aria-controls="example1" 
+    type="button"><span>Copy</span></button> <button class="btn btn-secondary buttons-csv buttons-html5" tabindex="0" aria-controls="example1" type="button"><span>CSV</span></button> 
+    <button class="btn btn-secondary buttons-excel buttons-html5" tabindex="0" aria-controls="example1" type="button"><span>Excel</span></button> <button class="btn btn-secondary buttons-pdf buttons-html5" tabindex="0" aria-controls="example1" type="button">
+    <span>PDF</span></button> 
+    <button class="btn btn-secondary buttons-print" tabindex="0" aria-controls="example1" type="button"><span>Print</span></button> <div class="btn-group"><button class="btn btn-secondary buttons-collection dropdown-toggle buttons-colvis" tabindex="0" aria-controls="example1" type="button" aria-haspopup="true" aria-expanded="false"><span>Column visibility</span>
+    <span class="dt-down-arrow"></span></button></div> </div></div><div class="col-sm-12 col-md-6"><div id="example1_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="example1"></label></div></div></div>
+    <div class="row"><div class="col-sm-12"><table id="example1" class="table table-bordered table-striped dataTable dtr-inline" aria-describedby="example1_info">
+    <thead>
+    <tr><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Nombre de la categoria</th>
+    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Descripción</th>
     
-{% endblock contenido %}
-    
-    
+    <th>Opciones</th>
+    </tr>
+    </thead>
+    <tbody>
+        
+        {% for categoria in categorias %}
+        <tr class="odd">
 
+            <td class="sorting_1 dtr-control" tabindex="0" style="">{{categoria.nombre}}</td>
+            <td class="">{{categoria.descripción}}</td>
+            <td>op</td>
+            <td> <a href="" class="btn btn-succes fas fa-eye"></a></td>
+            <td><a class="btn btn-primary" href="#"><i class="fas fa-edit"></i></a>
+                <a class="btn btn-danger" href="#"><i class="fas fa-trash-alt"></i></a>
+              </td>
+
+        </tr>
+        {% endfor %}
+            
+    </tbody>
+    <tr class="">
+        <form action="" method='POST'>
+            {% csrf_token %}
+            <td class="sorting_1 dtr-control" tabindex="0" style=""><input type="text"></td>
+            <td><input type="text"></td>
+             <td><input class="btn btn-success" type="submit" value="Agregar"></td>
+        </form>
+    </tr>
+</table>
+</div>
+</div>
+{% endblock contenido %}
+
+{% block javascript %}
+<!-- DataTables  & Plugins -->
+<script src="{% static 'datatables/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'datatables-bs4/js/dataTables.bootstrap4.min.js' %}"></script>
+<script src="{% static 'datatables-responsive/js/dataTables.responsive.min.js' %}"></script>
+<script src="{% static 'datatables-responsive/js/responsive.bootstrap4.min.js' %}"></script>
+<script src="{% static 'datatables-buttons/js/dataTables.buttons.min.js' %}"></script>
+<script src="{% static 'datatables-buttons/js/buttons.bootstrap4.min.js' %}"></script>
+<script src="{% static 'jszip/jszip.min.js' %}"></script>
+<script src="{% static 'pdfmake/pdfmake.min.js' %}"></script>
+<script src="{% static 'pdfmake/vfs_fonts.js' %}"></script>
+<script src="{% static 'datatables-buttons/js/buttons.html5.min.js' %}"></script>
+<script src="{% static 'datatables-buttons/js/buttons.print.min.js' %}"></script>
+<script src="{% static 'datatables-buttons/js/buttons.colVis.min.js' %}"></script>
+<!-- Page specific script -->
+<script>
+    $(function () {
+        $("#example1").DataTable({
+            "responsive": true, "lengthChange": false, "autoWidth": false,
+            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+        $('#example2').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": false,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+            "responsive": true,
+        });
+    });
+</script>
+{% endblock javascript %}
+    
+    
 
