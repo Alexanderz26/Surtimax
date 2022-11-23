@@ -25,6 +25,7 @@ def error_404(request,exception):
 def loggedIn(request):
      if request.user.is_authenticated:
          respuesta: "Ingresado como "+ request.user.username
+            
      else:
          respuesta:"No estas autenticado."
      return HttpResponse(respuesta)
