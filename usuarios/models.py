@@ -1,5 +1,7 @@
 from django.utils.translation import gettext_lazy as _
 from django.db import models
+###logic user###3
+from django.contrib.auth.models import User
 
 # Create your models here.
 # ENUM"CC", "CE", "PASAPORTE"
@@ -8,6 +10,7 @@ from django.db import models
 class Usuario(models.Model):
     nombre=models.CharField(max_length=45, verbose_name="Nombre")
     apellidos=models.CharField(max_length=45, verbose_name="Apellidos")
+    foto=models.ImageField(upload_to='images/usuarios',blank=True, default='images/usuarios/default.jpg')
     class TipoDocumento(models.TextChoices):
         CC='CC', _('Cédula de Ciudadanía')
         CE='CE', _('Cédula de Extranjería')
@@ -22,6 +25,7 @@ class Usuario(models.Model):
     direccion=models.CharField(max_length=100,verbose_name="Dirección")
     telefono=models.CharField(max_length=20,verbose_name="Teléfono")
     email=models.CharField(max_length=50,verbose_name="Correo")
+    email= models.EmailField(max_length=150, verbose_name='Correo')
     class Rol(models.TextChoices):
         Administrador='Administrador', _('Administrador')
         Empleado='Empleado', _('Empleado')     
@@ -32,3 +36,8 @@ class Usuario(models.Model):
         ACTIVO='1', _('Activo')
         INACTIVO='0', _('Inactivo')     
     estado=models.CharField(max_length=1, choices=Estado.choices, default=Estado.ACTIVO, verbose_name="Estado")
+    #### logic ####
+    user=models.ForeignKey(User, on_delete= models.CASCADE)
+#####aler sale los nombres
+    def __str__(self)->str:
+        return "%s %s" %(self.nombre, self.apellidos)  

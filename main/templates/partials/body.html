@@ -18,7 +18,7 @@
 
 
         {% endblock styleheet %}
-
+        
         <!-- Google Font: Source Sans Pro -->
         <link rel="stylesheet"
                 href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -33,7 +33,10 @@
         <link rel="stylesheet" href="{% static 'datatables-bs4/css/dataTables.bootstrap4.min.css' %}">
         <link rel="stylesheet" href="{% static 'datatables-responsive/css/responsive.bootstrap4.min.css' %}">
         <link rel="stylesheet" href="{% static 'datatables-buttons/css/buttons.bootstrap4.min.css' %}">
-
+        <!-- Alert -->
+        <link rel="stylesheet" href="{% static 'css/jquery.toast.css' %}">
+        <!-- Logo pagina -->
+        <link rel="shortcut icon" href="{% static 'img/IMAGENMAX 320X320 COSTA SECA 3.png' %}">
         <title>Surtimax</title>
 </head>
 
@@ -44,19 +47,27 @@
                 {% include 'partials/sidebar.html' %}
 
                 <!-- Content Wrapper. Contains page content -->
-                <div class="content-wrapper">
+                <div class="content-wrapper overflow-auto" style="height: 80%;">
                         {% include 'partials/header.html' %}
+                        <div class="container">
                         {% block contenido%}
 
                         {% endblock contenido%}
-
-                        <!-- /.Content-Wrapper.-->
+                        {% include 'partials/modal.html' %}
+                        </div>
+                        <!-- /.Alert mensaje.-->
+                        {% include 'partials/toast.html' %}
+                </div>  
+        </div>     <!-- /.Content-Wrapper.-->
                         {% include 'partials/footer.html' %}
-
-
-                        {% block blockname %}
+                       
+                        <!-- /mensages o alertas.-->
+                        
                         {% include 'partials/js.html' %}
-                        {% endblock blockname %}
+
+                        {% block javascript %}
+                        
+                        {% endblock javascript %}
 
 
 </body>
