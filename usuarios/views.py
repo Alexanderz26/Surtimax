@@ -7,7 +7,7 @@ from django.contrib import messages
 ### logic
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import User
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 
 @login_required(login_url='inicio')
 
@@ -45,7 +45,7 @@ def usuarios_crear(request):
                 
             )
             return redirect('usuarios')
-            
+ 
             
         else:
            form= UsuarioForm(request.POST,request.FILES)
@@ -58,6 +58,8 @@ def usuarios_crear(request):
 
     }
     return render (request,"usuarios/usuarios-crear.html",context)
+@login_required
+@permission_required('usuarios.views_usuario')
 
 # Filtro usuarios.
 def usuarios(request, modal_status='hid'):
