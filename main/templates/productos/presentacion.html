@@ -31,8 +31,8 @@
 
             <td class="sorting_1 dtr-control" tabindex="0" style="">{{presentacion.nombre}}</td>
             <td class="">{{presentacion.prefijo}}</td>
-            <td><a class="btn btn-primary" href="#"><i class="fas fa-edit"></i></a>
-                <a class="btn btn-danger" href="#"><i class="fas fa-trash-alt"></i></a>
+            <td><a class="btn btn-primary" href="{% url 'productos-editar' producto.id %}"><i class="fas fa-edit"></i></a> 
+                <a class="btn btn-danger" href="{% url 'productos-eliminar' producto.id %}"><i class="fas fa-trash-alt"></i></a>
               </td>
     
             >

@@ -1,3 +1,4 @@
+
 from django.shortcuts import redirect, render
 from productos.forms import ProductoForm,MarcaForm,CategoriaForm,PresentacionForm
 from productos.models import Productos,Categoria,Marca,Presentacion
@@ -57,8 +58,8 @@ def productos_eliminar(request, pk):
 
     
     Productos.objects.filter(id=pk).update(
-            estado='0'
-        )
+     estado='0'
+    )
     return redirect('productos')
 
     context={
@@ -66,14 +67,16 @@ def productos_eliminar(request, pk):
         'titulo':titulo,
     }
     return render(request,'productos/productos.html',context)
+
 def categorias(request):
     titulo="categorias"
     categorias=Categoria.objects.all()
+    print(categorias)
     if request.method == "POST":
         form=CategoriaForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('categoria')
+            return redirect('categorias')
         else:
             print("No se puede agregar")
     else:
@@ -82,7 +85,7 @@ def categorias(request):
     context={
         'titulo':titulo,
         'categorias':categorias,
-        
+        'form':form
     }
     return render(request,'productos/categorias.html',context)
 

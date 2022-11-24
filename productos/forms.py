@@ -15,7 +15,7 @@ class MarcaForm(forms.ModelForm):
 class CategoriaForm(forms.ModelForm):
     class Meta:
         model= Categoria
-        fields='__all__'
+        exclude=["estado"]
 
 class PresentacionForm(forms.ModelForm):
     class Meta:
