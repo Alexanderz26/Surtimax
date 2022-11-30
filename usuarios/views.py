@@ -104,9 +104,10 @@ def usuarios(request, modal_status='hid'):
         tipo="editar"    
         form_update= UsuarioUpdateForm(instance=usuario)
 
-##################### configuracion de eliminacion ################################################################
 
     if request.method == "POST" and 'modal-confirmar' in request.POST:
+##################### configuracion de eliminacion ################################################################
+
         if request.POST['tipo'] == 'eliminar':
             usuario = Usuario.objects.filter(id = int(request.POST['modal-pk'])).update(
                 estado='0'
@@ -115,11 +116,12 @@ def usuarios(request, modal_status='hid'):
                 request,f"Se eliminó el usuario  exitosamente!"
             )
             return redirect('usuarios')
+##################### configuracion de edicion ################################################################
 
         if request.POST['tipo'] == 'editar':
             pk_usuario = request.POST['modal-pk']
             usuario = Usuario.objects.get(id=pk_usuario)
-            form_update=UsuarioUpdateForm(request.POST, instance=usuario)
+            form_update=UsuarioUpdateForm(request.POST,request.FILES, instance=usuario )
             
             if form_update.is_valid():
                 form_update.save()

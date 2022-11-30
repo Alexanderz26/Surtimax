@@ -32,4 +32,4 @@ def error_404(request,exception):
 
 def logout_user(request):
     logout(request)
-    return redirect("registration/login.html")
+    return redirect("inicio")
