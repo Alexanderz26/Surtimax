@@ -37,7 +37,14 @@
            
           {% if usuario.estado == '1' %}
           
+          
+          {% if usuario.foto.url != "" %}
           <td class="align middle text-center"><img class="rounded-circle" src="{{ MEDIA_URL }}{{usuario.foto.url}}" alt="" width="50" height="50"></td>
+          {% else %}
+          <td class="align middle text-center"><img class="rounded-circle" src="/media/images/usuarios/default.jpg" alt="" width="50" height="50"></td>
+
+          {% endif %}
+            
           <td>{{usuario.nombre}}</td>
           <td>{{usuario.apellidos}}</td>
           <td>{{usuario.tipoDocumento}}</td>
