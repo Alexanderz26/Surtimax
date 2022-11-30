@@ -1,49 +1,78 @@
+
 {% extends 'partials/body.html' %}
+{% load static %}
+
+
 {% block contenido %}
-
-
-<table class="table">
-    <thead>
-      <tr>
-        <th scope="col">Categoria</th>
-        <th scope="col">Presentacón</th>
-        <th scope="col">Marca</th>
-        <th scope="col">CodBarras</th>
-        <th scope="col">Nombre</th>
-        <th scope="col">Descripción</th>
-        <th scope="col">Estado</th>
-        <th scope="col">Accion</th>
-
-
-      </tr>
-    </thead>
-  <tbody>
-    
-    {% for producto in productos %}
-      <tr>
-        
-        
-        {% if producto.estado != '3' %}
-          <td>{{producto.categoria}}</td>
-            <td>{{producto.marca}}</td>
-            <td>{{producto.presentacion}}</td>
-            <td>{{producto.codigoBarras}}</td>
-            <td>{{producto.nombre}}</td>
-            <td>{{producto.descripcion}}</td>
-            <td>{{producto.estado}}</td>
-
-            <td><a class="btn btn-primary" href="{% url 'productos-editar' producto.id %}"><i class="fas fa-edit"></i></a> 
-              <a class="btn btn-danger" href="{% url 'productos-eliminar' producto.id %}"><i class="fas fa-trash-alt"></i></a>
-            </td>
-        {% endif %}
-          
-           
-          
-      </tr>     
-    {% endfor %}
+<!-- /.card -->
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title">ver productos</h3>
+  </div>
+  <!-- /.card-header -->
+  <div class="card-body">
+    <table id="tabla-general" class="table table-bordered table-striped">
       
-        
-  </tbody>
-</table>
+      <thead >
+        <tr>
+          <th scope="col">Categoria</th>
+          <th scope="col">Presentacón</th>
+          <th scope="col">Marca</th>
+          <th scope="col">CodBarras</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Descripción</th>
+          <th scope="col">Estado</th>
+          <th scope="col">Accion</th>
+        </tr>
+      </thead>
+      <tbody>
+
+
+        {% for producto in productos %}
+        <tr>
+           
+           {% if producto.estado != '3'  %}
+          <td>{{producto.categoria}}</td>
+          <td>{{producto.marca}}</td>
+          <td>{{producto.presentacion}}</td>
+          <td>{{producto.codigoBarras}}</td>
+          <td>{{producto.nombre}}</td>
+          <td>{{producto.descripcion}}</td>
+          <td>{{producto.estado}}</td>
+
+          
+          <form action="" method="POST" class="col-4">
+            {% csrf_token %}
+            <td><a class="btn btn-primary" href="{% url 'productos-editar' producto.id %}"><i class="fas fa-edit"></i></a>
+            
+             <a class="btn btn-danger" href="{% url 'productos-eliminar' producto.id %}"><i class="fas fa-trash-alt"></i></a>
+            </th>
+           {% endif %}
+            
+               
+                   
+                    
+                    </button>
+                </form>
+
+            </div>
+        </td>
+          
+          
+        </tr>
+        {% endfor %}
+ 
+
+      </tbody>
+    </table>
+  
+  </div>
+  
 {% endblock contenido %}
+
+
+
+  
+
+
   

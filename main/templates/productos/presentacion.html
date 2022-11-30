@@ -8,57 +8,54 @@
 {% endblock stylesheet %}
 
 {% block contenido %}
-<div class="row"><div class="col-sm-12 col-md-6"><div class="dt-buttons btn-group flex-wrap">               
-    <button class="btn btn-secondary buttons-copy buttons-html5" tabindex="0" aria-controls="example1" 
-    type="button"><span>Copy</span></button> <button class="btn btn-secondary buttons-csv buttons-html5" tabindex="0" aria-controls="example1" type="button"><span>CSV</span></button> 
-    <button class="btn btn-secondary buttons-excel buttons-html5" tabindex="0" aria-controls="example1" type="button"><span>Excel</span>
-    </button> <button class="btn btn-secondary buttons-pdf buttons-html5" tabindex="0" aria-controls="example1" type="button">
-    <span>PDF</span></button> 
-    <button class="btn btn-secondary buttons-print" tabindex="0" aria-controls="example1" type="button"><span>Print</span></button> 
-        <div ><button aria-controls="example1" type="button" aria-haspopup="true" aria-expanded="false"><span></span>
-    <span class="dt-down-arrow"></span></button></div> </div></div><div class="col-sm-12 col-md-6"><div id="example1_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="example1"></label></div></div></div>
-    <div class="row"><div class="col-sm-12"><table id="example1" class="table table-bordered table-striped dataTable dtr-inline" aria-describedby="example1_info">
+<!-- /.card -->
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Gestiona presentación del producto</h3>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+      <table id="tabla-general" class="table table-bordered table-striped">
     <thead>
-    <tr><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Nombre </th>
-    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Prefijo</th>
-    <th>Opciones</th>
-    </tr>
+        <tr>
+            <th>nombre</th>
+            <th>prefijos</th>
+            <th>accion</th>
+        </tr>
     </thead>
-    <tbody>
-        
-        {% for presentacion in presentacion %}
-        <tr class="odd">
-
-            <td class="sorting_1 dtr-control" tabindex="0" style="">{{presentacion.nombre}}</td>
-            <td class="">{{presentacion.prefijo}}</td>
-            <td><a class="btn btn-primary" href="{% url 'productos-editar' producto.id %}"><i class="fas fa-edit"></i></a> 
-                <a class="btn btn-danger" href="{% url 'productos-eliminar' producto.id %}"><i class="fas fa-trash-alt"></i></a>
-              </td>
     
-            >
-         
-           
+        <tbody>
+        {% for presentacion in presentacion %}
+        <tr>
+   
+            <td>{{presentacion.nombre}}</td>
+    
+            <td>{{presentacion.prefijos}}</td>
+            <td> </a>
+            <a class="btn btn-primary" href="{% url 'presentacion-editar' presentacion.id %}"><i class="fas fa-edit"></i></a>
+                <a class="btn btn-danger" href="#"><i class="fas fa-trash-alt"></i></a>
+              </td>
         </tr>
         {% endfor %}
-            
-    </tbody>
-    <tr class="">
-        <form action="" method='POST'>
-        {% csrf_token %}
-        <td>
-            <input type="text" name="nombre" maxlength="90" required="" id="id_nombre">
-            <td class="sorting_1 dtr-control" tabindex="0" style=""><input type="text"></td>
-            
-            
-        </td>
-         <td><input class="btn btn-success" type="submit" value="Agregar"></td>
         
-        
-    </form>
-    </tr>
-</table>
-</div>
-</div>
+        <tr class="">
+
+            <form action="" method='POST'>
+               {% csrf_token %} 
+               <td>
+                <input type="text" name="nombre" maxlength="90" required="" id="id_nombre">
+               
+                
+                
+            </td>
+              <td><input type="text" name="prefijos" maxlength="5" required="" id="id_prefijos"></td>  
+                    <td><input class="btn btn-success" type="submit" value="Agregar"></td>
+                    
+                    
+            </form>
+        </tr>
+        </tbody>
+    </table>
 {% endblock contenido %}
 
 {% block javascript %}

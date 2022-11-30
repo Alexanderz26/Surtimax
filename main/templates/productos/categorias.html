@@ -8,7 +8,15 @@
 {% endblock stylesheet %}
 
 {% block contenido %}
-<table class="table">
+<!-- /.card -->
+<div class="card">
+    <div class="card-header">
+      <h3 class="card-title">crea tu categoria</h3>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+      <table id="tabla-general" class="table table-bordered table-striped">
+
 <thead>
     <tr>
         <th>nombre</th>
@@ -30,12 +38,12 @@
     
             <td>{{categoria.descripcion}}</td>
             <td> </a>
-            <a class="btn btn-primary" href="#"><i class="fas fa-edit"></i></a>
+            <a class="btn btn-primary" href="{% url 'categorias-editar' categoria.id %}"><i class="fas fa-edit"></i></a>
                 <a class="btn btn-danger" href="#"><i class="fas fa-trash-alt"></i></a>
               </td>
         </tr>
     {% endfor %}
-        
+       
     <tr class="">
 
         <form action="" method='POST'>

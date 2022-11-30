@@ -1,14 +1,5 @@
-{% load static %}
-    <!-- jQuery -->
-    <script src="{% static 'jquery/jquery.min.js' %}"></script>
-    <!-- AdminLTE App -->
-    <script src="{% static 'js/adminlte.js' %}"></script>
-    <!-- Toastr-->
-    <script src="{% static 'toastr/toastr.min.js' %}"></script>
-    <script type="aplplication/json"src="{% static 'toastr/toastr-options.js' %}"></script>
-    
-    <script>
-      tostadas.opciones = {
+
+tostadas.opciones = {
     "botóncerrar": cierto,
     "depurar": falso,
     "newestOnTop": falso,
@@ -26,11 +17,3 @@
     "hideMethod": "desaparecer"
   }
 
-
-    </script>
-
-{% block javascript %}
-
-
-{% endblock javascript %}
-    
