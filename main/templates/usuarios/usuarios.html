@@ -5,6 +5,7 @@
 {% block contenido %}
 <!-- /.card -->
 <div class="card">
+  {% if perms.usuarios.add_usuario %}
   <div class="card-header">
     <h3 class="card-title">DataTable with default features</h3>
   </div>
@@ -80,7 +81,7 @@
   <!-- /.card-body -->
   <input type="hidden" name="modal-status" id="modal-status" value="{{modal_status}}">
 </div>
-
+{% endif %}
 {% endblock contenido %}
 
 

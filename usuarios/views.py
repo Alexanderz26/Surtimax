@@ -10,7 +10,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required, permission_required
 
 @login_required(login_url='inicio')
-
+@permission_required('usuarios.view_usuario')
 
 def usuarios_crear(request):
     titulo='Usuarios - Crear'
