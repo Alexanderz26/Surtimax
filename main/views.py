@@ -29,7 +29,7 @@ def error_404(request,exception):
 #     else:
 #         respuesta:"No estas autenticado."
 #     return HttpResponse(respuesta)
-
+###################### login ################
 def logout_user(request):
     logout(request)
     return redirect("inicio")
