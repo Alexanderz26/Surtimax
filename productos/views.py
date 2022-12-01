@@ -26,7 +26,6 @@ def productos_crear(request):
     if request.method == "POST":
         form= ProductoForm(request.POST)
         if form.is_valid():
-            form.save()
             return redirect('productos')
         else:
             print("Error")
@@ -47,6 +46,9 @@ def productos_editar(request, pk):
         form= ProductoForm(request.POST, instance=producto)
         if form.is_valid():
             form.save()
+            messages.success(
+                request,f"Se edito el producto de {request.POST['nombre']} exitosamente!"
+            )
             return redirect('productos')
         else:
             print("Error")
@@ -98,6 +100,9 @@ def categorias_editar(request, pk):
         form= CategoriaForm(request.POST, instance=categorias)
         if form.is_valid():
             form.save()
+            messages.success(
+                request,f"Se edito la categoria de {request.POST['nombre']} exitosamente!"
+            )
             return redirect('categorias')
         else:
             print("Error")
@@ -110,21 +115,20 @@ def categorias_editar(request, pk):
     return render(request,'productos/categorias.html',context)
 
 #########################CATEGORIAS ELIMINAR##################
-def categorias_eliminar(request,pk):
-    titulo="categorias"
-
-    categoria=Categoria.objects.filter(id=pk).delete()
+def categoria_eliminar(request,pk):
+    titulo="Departamentos"
+    
+    categorias=Categoria.objects.filter(id=pk).delete()
     messages.success(
-         request,f"Se eliminó categoria exitosamente!"
+            request,f"Se eliminó la categoria exitosamente!"
         )
-    return redirect('categoria')
-
+    return redirect('categorias')
+    
     context={
-       'titulo':titulo,   
+        'titulo':titulo,
+        
     }
-
-    return render(request,'productos/categorias.html',context)
-
+    return render(request,'productos/categoria.html',context)
 #########################MARCA################################
 def marca(request):
     titulo="marca"
@@ -153,11 +157,14 @@ def marca(request):
 
 def marca_editar(request, pk):
     titulo="marca - Editar"
-    marca=Marca.objects.filter(pk=id)
+    marca=Marca.objects.get(id=pk)
     if request.method == "POST":
         form= MarcaForm(request.POST, instance=marca)
         if form.is_valid():
             form.save()
+            messages.success(
+                request,f"Se edito la marca de {request.POST['nombre']} exitosamente!"
+            )
             return redirect('marca')
         else:
             print("Error")
@@ -166,6 +173,22 @@ def marca_editar(request, pk):
     context={
         'titulo':titulo,
         'form': form
+    }
+    return render(request,'productos/marca.html',context)
+
+    ######################### MARCA ELIMINAR##################
+def marca_eliminar(request,pk):
+    titulo="marca"
+    
+    marca=Marca.objects.filter(id=pk).delete()
+    messages.success(
+            request,f"Se eliminó la marca exitosamente!"
+        )
+    return redirect('marca')
+    
+    context={
+        'titulo':titulo,
+        
     }
     return render(request,'productos/marca.html',context)
 
@@ -206,6 +229,9 @@ def presentacion_editar(request, pk):
         form= PresentacionForm(request.POST, instance=presentacion)
         if form.is_valid():
             form.save()
+            messages.success(
+                request,f"Se edito la presentación de {request.POST['nombre']} exitosamente!"
+            )
             return redirect('presentacion')
         else:
             print("Error")
@@ -217,5 +243,20 @@ def presentacion_editar(request, pk):
     }
     return render(request,'productos/presentacion.html',context)
 
-     #########################PRESENTACIÓN ELIMINAR################################
+         ######################### PRESENTACIÓN ELIMINAR##################
+def presentacion_eliminar(request,pk):
+    titulo="presentacion"
+    
+    presentacion=Presentacion.objects.filter(id=pk).delete()
+    messages.success(
+            request,f"Se eliminó la presentacion exitosamente!"
+        )
+    return redirect('presentacion')
+    
+    context={
+        'titulo':titulo,
+        
+    }
+    return render(request,'productos/presentacion.html',context)
+
 

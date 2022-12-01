@@ -27,7 +27,7 @@
 
                         <td>{{marca.nombre}}</td>
                         <td><a class="btn btn-primary" href="{% url 'marca-editar' marca.id %}"><i class="fas fa-edit"></i></a> 
-                            <a class="btn btn-danger" href="#"><i class="fas fa-trash-alt"></i></a>
+                            <a class="btn btn-danger" href="{% url 'marca-eliminar' marca.id %}"><i class="fas fa-trash-alt"></i></a>
                           </td>
 
                     </tr>

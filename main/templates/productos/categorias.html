@@ -40,7 +40,7 @@
             <td>{{categoria.descripcion}}</td>
             <td> </a>
             <a class="btn btn-primary" href="{% url 'categorias-editar' categoria.id %}"><i class="fas fa-edit"></i></a>
-                <a class="btn btn-danger" href="#"><i class="fas fa-trash-alt"></i></a>
+                <a class="btn btn-danger" href="{% url 'categoria-eliminar' categoria.id %}"><i class="fas fa-trash-alt"></i></a>
               </td>
         </tr>
     {% endfor %}

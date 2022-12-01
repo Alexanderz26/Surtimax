@@ -1,7 +1,6 @@
 {% load bootstrap5 %}
 {% bootstrap_css %}
 {% bootstrap_javascript %}
-{% bootstrap_messages %}
 {% load static %}
 
 <!DOCTYPE html>
@@ -16,6 +15,12 @@
                         initial-scale=1.0">
 
                 <!-- Google Font: Source Sans Pro -->
+
+                
+                {% block stylesheet %}
+                        
+
+                {% endblock stylesheet %}
                 <link rel="stylesheet"
                         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
                 <!-- Font Awesome -->
@@ -26,13 +31,24 @@
                         href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
                 <!-- Theme style -->
                 <link rel="stylesheet" href="{% static 'css/adminlte.min.css' %}">
-                <!-- Toastr -->
-                <link rel="stylesheet" href="{% static 'toastr/toastr.min.css' %}">
-                
-                static'toastr/toastr.min.css'
+                <!-- Toast -->
+                <link rel="stylesheet" href="{% static 'css/jquery.toast.css' %}">
+                 <!-- DataTables -->
+                <link rel="stylesheet" href="{% static 'datatables-bs4/css/dataTables.bootstrap4.min.css' %}">
+                <link rel="stylesheet" href="{% static 'datatables-responsive/css/responsive.bootstrap4.min.css' %}">
+                <link rel="stylesheet" href="{% static 'datatables-buttons/css/buttons.bootstrap4.min.css' %}">
+                <!-- select 2 -->
+                <link rel="stylesheet" href="{% static 'css\select2.min.css' %}">
+
                 
                 <title>Surtimax</title>
         </head>
+        <style>
+           input,
+           select{
+             width: 100%
+           }
+        </style>
         <body class="hold-transition sidebar-mini layout-fixed">
                 <div class="wrapper">
 
@@ -48,17 +64,14 @@
                         {% include 'partials/modal.html' %}
                         
                         </div> 
-                        {% include 'partials/toastr.html' %}
+                        {% include 'partials/toast.html' %}
                        </div>
                         <!-- /.Content-Wrapper.-->
                        
                                 
                     
 
-        
-       
-                        
-                   
+
                         
                     {% block blockname %}
                         {% include 'partials/js.html' %}

@@ -1,23 +1,15 @@
 
+
+
 {% extends 'partials/body.html' %}
 {% load static %}
 
 
 {% block contenido %}
-<div class="dt-buttons btn-group flex-wrap "><button class="btn btn-secondary buttons-copy buttons-html5" tabindex="0" aria-controls="example1" type="button">
-  <span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Copiar</font>
-  </font></span></button> <button class="btn btn-secondary buttons-csv buttons-html5" tabindex="0" aria-controls="example1" type="button">
-  <span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">CSV</font>
-  </font></span></button> <button class="btn btn-secondary buttons-excel buttons-html5" tabindex="0" aria-controls="example1" type="button">
-  <span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Excel</font></font></span></button> 
-  <button class="btn btn-secondary buttons-pdf buttons-html5" tabindex="0" aria-controls="example1" type="button"><span><font style="vertical-align: inherit;">
-  <font style="vertical-align: inherit;">PDF</font></font></span></button> <button class="btn btn-secondary buttons-print" tabindex="0" aria-controls="example1" type="button"><span>
-  <font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Impresión</font> </div>
-
 <!-- /.card -->
 <div class="card">
   <div class="card-header">
-    <h3 class="card-title">ver productos</h3>
+    <h3 class="card-title">DataTable with default features</h3>
   </div>
   <!-- /.card-header -->
   <div class="card-body">
@@ -40,8 +32,8 @@
 
         {% for producto in productos %}
         <tr>
-           
-           {% if producto.estado != '3'  %}
+
+          {% if producto.estado != '3'  %}
           <td>{{producto.categoria}}</td>
           <td>{{producto.marca}}</td>
           <td>{{producto.presentacion}}</td>
@@ -51,38 +43,17 @@
           <td>{{producto.estado}}</td>
 
           
-          <form action="" method="POST" class="col-4">
-            {% csrf_token %}
-            <td><a class="btn btn-primary" href="{% url 'productos-editar' producto.id %}"><i class="fas fa-edit"></i></a>
-            
-             <a class="btn btn-danger" href="{% url 'productos-eliminar' producto.id %}"><i class="fas fa-trash-alt"></i></a>
-            </th>
-           {% endif %}
-            
-               
-                   
-                    
-                    </button>
-                </form>
+            </form>
 
-            </div>
-        </td>
-          
-          
-        </tr>
-        {% endfor %}
+        </div>
+    </td>
+      
+      {% endif %}
+    </tr>
+    {% endfor %}
+
+
  
 
-      </tbody>
-    </table>
-  
-  </div>
-  
+
 {% endblock contenido %}
-
-
-
-  
-
-
-  
