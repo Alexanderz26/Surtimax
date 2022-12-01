@@ -1,5 +1,5 @@
 from django.shortcuts import redirect, render
-from productos.forms import ProductoForm,MarcaForm,CategoriaForm,PresentacionForm
+from productos.forms import  ProductoForm,MarcaForm,CategoriaForm,PresentacionForm
 from productos.models import Productos,Categoria,Marca,Presentacion
 from django.contrib import messages
 
@@ -153,7 +153,7 @@ def marca(request):
 
 def marca_editar(request, pk):
     titulo="marca - Editar"
-    marca=Marca.objects.get(id=pk)
+    marca=Marca.objects.filter(pk=id)
     if request.method == "POST":
         form= MarcaForm(request.POST, instance=marca)
         if form.is_valid():
@@ -170,7 +170,9 @@ def marca_editar(request, pk):
     return render(request,'productos/marca.html',context)
 
 
-#########################PRESENTACIÓN################################
+
+    #########################PRESENTACIÓN ################################
+
 def presentacion(request):
     titulo="presentacion"
     presentacion=Presentacion.objects.all()
@@ -215,18 +217,5 @@ def presentacion_editar(request, pk):
     }
     return render(request,'productos/presentacion.html',context)
 
-
-
-   
-
-
-
-   
-
-
-
-
-
-
-   
+     #########################PRESENTACIÓN ELIMINAR################################
 

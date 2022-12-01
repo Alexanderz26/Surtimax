@@ -8,6 +8,7 @@
 {% endblock stylesheet %}
 
 {% block contenido %}
+
 <!-- /.card -->
 <div class="card">
     <div class="card-header">
@@ -33,7 +34,7 @@
             <td>{{presentacion.prefijos}}</td>
             <td> </a>
             <a class="btn btn-primary" href="{% url 'presentacion-editar' presentacion.id %}"><i class="fas fa-edit"></i></a>
-                <a class="btn btn-danger" href="#"><i class="fas fa-trash-alt"></i></a>
+                <a class="btn btn-danger" href="{% url 'presentacion-eliminar' presentacion.id %}"><i class="fas fa-trash-alt"></i></a>
               </td>
         </tr>
         {% endfor %}
@@ -93,4 +94,3 @@
 {% endblock javascript %}
     
     
-
