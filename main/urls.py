@@ -23,10 +23,14 @@ from django.conf import settings
 from django.conf.urls.static import static
 ############################################
 ####### Importes Logic #######
-from main.views import logout_user,loggedIn
+from main.views import logout_user,loggedIn,proveedores, compras
 from django.contrib.auth.views import LoginView as login
 #modulos de andres leon
 from compras import views
+
+
+
+
 ############################################
 
 handler404=error_404
@@ -41,7 +45,12 @@ urlpatterns = [
     path('logout/',logout_user,name="logout"),
     #path("select2/", include("django_select2.urls")),
     
+    
     #modulos de Andres leon
-    path('compras/', views.compras, name='compras')
+    
+    path('proveedores/',  proveedores, name='proveedores' ),
+    path('compras/', compras, name='compras')
+    
+   
 
 ] + static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)
