@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'crispy_forms', #pip install crispy-forms
     'crispy_bootstrap5',#pip install crispy-bootstrap5
     'usuarios',
+    'compras',
 ]
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"

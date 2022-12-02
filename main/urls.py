@@ -25,6 +25,8 @@ from django.conf.urls.static import static
 ####### Importes Logic #######
 from main.views import logout_user,loggedIn
 from django.contrib.auth.views import LoginView as login
+#modulos de andres leon
+from compras import views
 ############################################
 
 handler404=error_404
@@ -33,10 +35,13 @@ urlpatterns = [
     # reemplazaa path('', inicio , name="inicio"),
     path('',login.as_view(),name='inicio'),
     path('adm/', inicioAdmin , name="inicio-admin"),
-    path('usuarios/', include('usuarios.urls')),
+    path('usuarios/', include('usuarios.urls'), name='usuarios'),
     
     path('loggedin/',loggedIn,name="inicio-sesion"),
     path('logout/',logout_user,name="logout"),
     #path("select2/", include("django_select2.urls")),
+    
+    #modulos de Andres leon
+    path('compras/', views.compras, name='compras')
 
 ] + static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)
