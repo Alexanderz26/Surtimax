@@ -4,24 +4,58 @@
 {% block contenido %}
 
 
-  <h1>Estas son los proveedores</h1>  
-
-  {% for proveedor in proveedores %}
-  
-  <div>
-    <p>
-      <h2>
-        {{proveedor.razonSocial}}
-      </h2>
-      <h1>
-        {{proveedor.documento}}
-      </h1>
-    </p>
+<!--Header-->
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title">Proveedores</h3>
   </div>
+<!--Tabla-->
+  <table class="table table-bordered table-striped" id="tabla-proveedores">
+    <thead class="table-dark">
+      <tr>
+        <th>Razón Social</th>
+        <th>Sector Comercial</th>
+        <th>Tipo de Documento</th>
+        <th>Número de documenton</th>
+        <th>Dirección</th>
+        <th>Teléfono</th>
+        <th>e-mail</th>      
+      </tr>
+    </thead>
 
 
+  <!--back end inf-->
+  {% for proveedor in proveedores %}
+    <tr>
+      <td>{{proveedor.razonSocial}}</td>
+      <td>{{proveedor.sectorComercial}}</td>
+      <td>{{proveedor.tipoDocumento}}</td>
+      <td>{{proveedor.documento}}</td>
+      <td>{{proveedor.direccion}}</td>
+      <td>{{proveedor.telefono}}</td>          
+      <td>{{proveedor.email}}</td>
+    </tr>
+    <!--
+    <h1>Estas son los proveedores</h1>  
+
+    
+    
+    <div>
+      <p>
+        <h2>
+          {{proveedor.razonSocial}}
+        </h2>
+        <h1>
+          {{proveedor.documento}}
+        </h1>
+        <p>{{proveedor.sectorComercial}}</p>
+      </p>
+    </div>
+  -->
   {% endfor %}
-  
+    
+  </table>  
+</div>  
   <p>aca deberia ir la info</p>
 
 {% endblock contenido %}

@@ -34,6 +34,22 @@
    
   });
 </script>
+<!--DataTable Proveedores-->
+<script>
+  $(function () {
+    $("#tabla-proveedores").DataTable({
+      //dataTable configurations
+      "responsive": true, "lengthChange": false, "autoWidth": true,"ordering": true,
+      "searching": true, "info": true, "lengthChange": true, 
+      "buttons": ["copy", "csv", "excel", "pdf", "print"],     
+
+    }
+
+    ).buttons().container().appendTo('#tabla-proveedores_wrapper .col-md-6:eq(0)');
+  });
+</script>
+
+
 <script src="{% static 'js/modal-status.js' %}"></script>
 {% block javascript %}
 {% endblock javascript %}
