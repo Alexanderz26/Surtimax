@@ -20,6 +20,10 @@ class Proveedor(models.Model):
     email=models.EmailField(max_length=150, verbose_name='Correo')
     url=models.URLField(max_length=100, verbose_name='URL', blank=True, null=True)
 
+    class Meta:
+        verbose_name_plural='provedores'
+    
+
     #funcion para definir como se muestran los elementos en el admin
     def __str__(self)->str:
         return "%s" %(self.razonSocial) 

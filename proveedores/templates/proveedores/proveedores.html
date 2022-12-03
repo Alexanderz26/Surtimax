@@ -1,0 +1,27 @@
+{% extends 'partials/body.html' %}
+{% load static %}
+
+{% block contenido %}
+
+
+  <h1>Estas son los proveedores</h1>  
+
+  {% for proveedor in proveedores %}
+  
+  <div>
+    <p>
+      <h2>
+        {{proveedor.razonSocial}}
+      </h2>
+      <h1>
+        {{proveedor.documento}}
+      </h1>
+    </p>
+  </div>
+
+
+  {% endfor %}
+  
+  <p>aca deberia ir la info</p>
+
+{% endblock contenido %}

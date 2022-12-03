@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from django.views.defaults import page_not_found
 #from django.contrib import messages
 #from django.contrib.auth import logout
+from proveedores.models import Proveedor
 
 #####elimina para logic####
 
@@ -35,8 +36,7 @@ def logout_user(request):
    # logout(request)
     return redirect("registration/login.html")
 
-def proveedores (request):
-    return render(request,'proveedores/proveedores.html')
 
-def compras(request):
-    return render (request, 'compras/compras.html')
+    
+    
+
