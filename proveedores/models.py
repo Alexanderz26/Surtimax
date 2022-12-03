@@ -4,7 +4,7 @@ from django.db import models
 # Create your models here.
 
 class Proveedor(models.Model):
-    razonSocial=models.CharField(max_length=50, verbose_name="Razon Social")
+    razonSocial=models.CharField(max_length=50, verbose_name="Razón Social")
     sectorComercial=models.CharField(max_length=50, verbose_name="Sector Comercial")
     class TipoDocumento(models.TextChoices):
         NIT='NIT', _('NIT')
@@ -18,4 +18,8 @@ class Proveedor(models.Model):
     telefono=models.CharField(max_length=20,verbose_name="Teléfono")
     email=models.CharField(max_length=50,verbose_name="Correo")
     email=models.EmailField(max_length=150, verbose_name='Correo')
-    url=models.URLField(max_length=100, verbose_name='URL')
+    url=models.URLField(max_length=100, verbose_name='URL', blank=True, null=True)
+
+    #funcion para definir como se muestran los elementos en el admin
+    def __str__(self)->str:
+        return "%s" %(self.razonSocial) 
