@@ -5,6 +5,7 @@
 {% block contenido %}
 <!-- /.card -->
 <div class="card">
+  {% if perms.usuarios.add_usuario %}
   <div class="card-header">
     <h3 class="card-title">DataTable with default features</h3>
   </div>
@@ -36,7 +37,14 @@
            
           {% if usuario.estado == '1' %}
           
+          
+          {% if usuario.foto.url != "" %}
           <td class="align middle text-center"><img class="rounded-circle" src="{{ MEDIA_URL }}{{usuario.foto.url}}" alt="" width="50" height="50"></td>
+          {% else %}
+          <td class="align middle text-center"><img class="rounded-circle" src="/media/images/usuarios/default.jpg" alt="" width="50" height="50"></td>
+
+          {% endif %}
+            
           <td>{{usuario.nombre}}</td>
           <td>{{usuario.apellidos}}</td>
           <td>{{usuario.tipoDocumento}}</td>
@@ -80,7 +88,7 @@
   <!-- /.card-body -->
   <input type="hidden" name="modal-status" id="modal-status" value="{{modal_status}}">
 </div>
-
+{% endif %}
 {% endblock contenido %}
 
 

@@ -7,10 +7,10 @@ from django.contrib import messages
 ### logic
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import User
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 
 @login_required(login_url='inicio')
-
+@permission_required('usuarios.view_usuario')
 
 def usuarios_crear(request):
     titulo='Usuarios - Crear'
@@ -45,7 +45,7 @@ def usuarios_crear(request):
                 
             )
             return redirect('usuarios')
-            
+ 
             
         else:
            form= UsuarioForm(request.POST,request.FILES)
@@ -58,6 +58,8 @@ def usuarios_crear(request):
 
     }
     return render (request,"usuarios/usuarios-crear.html",context)
+@login_required
+@permission_required('usuarios.views_usuario')
 
 # Filtro usuarios.
 def usuarios(request, modal_status='hid'):
@@ -102,9 +104,10 @@ def usuarios(request, modal_status='hid'):
         tipo="editar"    
         form_update= UsuarioUpdateForm(instance=usuario)
 
-##################### configuracion de eliminacion ################################################################
 
     if request.method == "POST" and 'modal-confirmar' in request.POST:
+##################### configuracion de eliminacion ################################################################
+
         if request.POST['tipo'] == 'eliminar':
             usuario = Usuario.objects.filter(id = int(request.POST['modal-pk'])).update(
                 estado='0'
@@ -113,11 +116,12 @@ def usuarios(request, modal_status='hid'):
                 request,f"Se eliminó el usuario  exitosamente!"
             )
             return redirect('usuarios')
+##################### configuracion de edicion ################################################################
 
         if request.POST['tipo'] == 'editar':
             pk_usuario = request.POST['modal-pk']
             usuario = Usuario.objects.get(id=pk_usuario)
-            form_update=UsuarioUpdateForm(request.POST, instance=usuario)
+            form_update=UsuarioUpdateForm(request.POST,request.FILES, instance=usuario )
             
             if form_update.is_valid():
                 form_update.save()
