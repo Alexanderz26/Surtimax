@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'crispy_bootstrap5',#pip install crispy-bootstrap5
     # pip install django-select2 pip install django-redis buscar en google git redis msi
     'django_select2',
-    'usuarios',
+    'usuarios'
 ]
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"

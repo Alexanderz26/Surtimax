@@ -22,6 +22,13 @@ def inicioAdmin(request):
 def error_404(request,exception):
     return page_not_found(request, '404.html')
 
+def reportes_informe(request):
+    titulo="Reportes"
+    context= {  
+        'titulo': titulo   
+    }
+    return render(request,'reportes.html', context)
+
 #def loggedIn(request):
 #    if request.user.is_authenticated:
 #         respuesta: "Ingresado como "+ request.user.username

@@ -1,0 +1,22 @@
+{% extends 'partials/body.html' %}
+{% load static %}
+
+{% block contenido %}
+<section class="content">
+    <div class="container-fluid">
+        <!-- Small boxes (Stat box) -->
+        <div class="row">
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-info">
+                    <div class="inner">                  
+                        <h3>Usuarios</h3>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-person"></i>
+                    </div>
+                    <a href="{% url 'usuarios' %}" class="small-box-footer">Más info <i
+                            class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+{% endblock contenido %}

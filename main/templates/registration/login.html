@@ -27,11 +27,15 @@
                 
                 <title>Surtimax</title>
 </head>
-<body class="login-page" style="min-height: 466px;">
+
+<body class="login-page " style="min-height: 466px;">
+
     <div class="login-box">
-    <div class="card card-outline card-primary">
+    <div class="card card-outline card-danger ">
+         
         <div class="card-header text-center">
-        <a href="../../index2.html" class="h1"><b>Surtimax</b>LTE</a>
+                <img class="img-thumbnail img-fluid" src="{% static 'img/LogoIlustracionLateral.png' %}">
+        <a href="{% url 'inicio' %}" class="h1"><b>Surtimax</b></a>
         </div>
         <div class="card-body">
         <p class="login-box-msg">Bienvenido al sistema</p>

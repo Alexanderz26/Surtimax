@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls import handler404
-from main.views import error_404, inicioAdmin
+from main.views import error_404, inicioAdmin, reportes_informe
 
 ####### Importes para subir imágenes #######
 from django.conf import settings
@@ -35,6 +35,7 @@ urlpatterns = [
     #reemplaza path('',login.as_view(),name='inicio'),
     path('adm/', inicioAdmin , name="inicio-admin"),
     path('usuarios/', include('usuarios.urls')),
+    path('reportes/', reportes_informe,name="reportes_informe"),
     
     #path('loggedin/',loggedIn,name="inicio-sesion"),
     ####### logic con recuperar contraseña #####
