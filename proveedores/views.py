@@ -35,7 +35,7 @@ def add_proveedor(request):
             proveedor.url= request.POST.get('url')
             proveedor.save()
             messages.success(request, "Proveedor añadido con éxito!")
-            return HttpResponseRedirect("/")
+            return HttpResponseRedirect("proveedores/")
         else:
             return render (request, 'add.html') ##cambiar cuando sea necesario
 #Function to View  Proveedor data individually
