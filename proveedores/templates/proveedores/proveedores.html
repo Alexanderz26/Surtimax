@@ -11,7 +11,7 @@
   </div>
   <div>
     <td>
-      <a class="btn btn-success text-center" title="Agregar" href="#">
+      <a class="btn btn-success text-center" title="Agregar" data-bs-toggle="modal" data-bs-target="#addModal">
         <i class="fas fa-plus"></i>
       </a>
     </td>
@@ -32,7 +32,7 @@
       </tr>
     </thead>
 
-
+    {% include 'add.html' %}
   <!--back end inf-->
   {% for proveedor in proveedores %}
     <tr>
