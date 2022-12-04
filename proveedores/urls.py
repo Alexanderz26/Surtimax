@@ -7,6 +7,7 @@ urlpatterns = [
 
     #Path to ADD Proveedor
     path('add_proveedor', views.add_proveedor, name="add_proveedor"),
+
     #Path to View  Proveedor data individually
     path('proveedor/<str:proveedor_id>', views.proveedor, name="proveedor"),
     #Path to EDIT Proveedor

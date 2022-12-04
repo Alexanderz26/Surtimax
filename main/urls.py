@@ -25,6 +25,7 @@ from django.conf.urls.static import static
 ####### Importes Logic #######
 from main.views import logout_user,loggedIn
 from django.contrib.auth.views import LoginView as login
+from proveedores import views
 #modulos de andres leon
 #from compras import views
 
@@ -51,6 +52,8 @@ urlpatterns = [
     
     path('compras/', include('compras.urls'), name='compras'),
     path('proveedores/', include('proveedores.urls'), name='proveedores'),
+    path('add_proveedor', views.add_proveedor, name="add_proveedor"),
+    
     
    
 

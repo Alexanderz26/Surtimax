@@ -2,7 +2,7 @@
   <div class="modal fade" {% block modal-id %} id="addModal" {% endblock modal-id %}  tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header">
+        <div class="modal-header bg-gradient-green">
           <h5 class="modal-title" id="addModalLabel">
             {% block modal-title %} <i class="fas fa-plus"></i>&nbsp;&nbsp; Agregar Proveedor {% endblock modal-title %}
           </h5>
@@ -15,26 +15,75 @@
                 
                 {% block Value_id %}{% endblock Value_id %}
                 <div class="input-group mb-3">
-                    <span class="btn border-secondary bg-light"><i class="fas fa-user-alt"></i></span>
-                    <input type="text" class="form-control" name="Razón Social" placeholder="Razón Social" required>
+                    <span class="btn border-secondary bg-light side-label"><i class="fas fa-briefcase"></i></span>
+                    <input type="text" class="form-control" name="razonSocial" placeholder="Razón Social" required>
                 </div>
 
                 <div class="input-group mb-3">
-                    <span class="btn border-secondary bg-light"><i class="fas fa-user-alt"></i></span>
-                    <input type="text" class="form-control" name="Sector Comercial" placeholder="Sector Comercial" required>
+                    <span class="btn border-secondary bg-light side-label"><i class="fas fa-cogs"></i></span>
+                    <input type="text" class="form-control" name="sectorComercial" placeholder="Sector Comercial" required>
+                </div>
+
+                <div class="input-group mb-3 ">
+                    <label >
+                        <span class="btn border-secondary bg-light side-label" >
+                            <i class="fas fa-industry"></i>
+                        </span>
+                    </label>
+                    <select class="form-select form-control side-label" name="tipoDocumento" required>
+                        
+                        {% block option %}
+                        <option class="" value="" hidden>Selecione tipo de documento</option>
+                        {% endblock option %}
+                            
+                        <option value="NIT">NIT</option>
+                        <option value="RUT">RUT</option>
+                        <option value="CC">Cédula de ciudadanía</option>
+                        <option value="CE">Cédúla de extranjería</option>
+                        <option value="Otro">Otro</option>
+                    </select>
                 </div>
 
                 <div class="input-group mb-3">
-                    <span class="btn border-secondary bg-light"><i class="fas fa-user-alt"></i></span>
-                    <input type="text" class="form-control" name="Razón Social" placeholder="Razón Social" required>
+                    <span class="btn border-secondary bg-light side-label"><i class="fas fa-id-card"></i></span>
+                    <input type="text" class="form-control" name="documento" placeholder="Número de documento" required>
+                </div>
+
+                <div class="input-group mb-3">
+                    <span class="btn border-secondary bg-light side-label"><i class="fas fa-map-marker"></i></span>
+                    <input type="text" class="form-control" name="direccion" placeholder="Dirección" required>
+                </div>
+
+                <div class="input-group mb-3">
+                    <span class="btn border-secondary bg-light side-label"><i class="fas fa-phone"></i></span>
+                    <input type="text" class="form-control" name="telefono" placeholder="Teléfono" required>
+                </div>
+
+                <div class="input-group mb-3">
+                    <span class="btn border-secondary bg-light side-label"><i class="fas fa-link"></i></span>
+                    <input type="text" class="form-control" name="email" placeholder="e-mail" required>
+                </div>
+
+                <div class="input-group mb-3">
+                    <span class="btn border-secondary bg-light side-label"><i class="fas fa-user-alt"></i></span>
+                    <input type="text" class="form-control" name="url" placeholder="URL (no es obligatorio)" >
                 </div>
                     
             </div>
-        </form>    
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
+          
+        
+        
+            <div class="modal-footer">
+            <a href="{% url 'add_proveedor' %}"></a>
+            <button type="reset" class="btn btn-outline-info" title="Reset" >Limpiar</button>
+            </a>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            
+            
+            <button type="submit"  class="btn btn-secondary"> 
+                {% block btn-action %}<i class="fas fa-plus"></i>&nbsp;&nbsp; Agregar Proveedor{% endblock btn-action %}</button>          
+            </div>
+        </form> 
       </div>
     </div>
   </div>
