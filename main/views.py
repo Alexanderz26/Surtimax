@@ -19,8 +19,7 @@ def inicioAdmin(request):
         'titulo': titulo   
     }
     return render(request,'index.html',context)
- #########################PRESENTACIÓN ELIMINAR################################
-
+ 
 
 
     

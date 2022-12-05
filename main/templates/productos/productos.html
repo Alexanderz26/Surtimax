@@ -1,59 +1,92 @@
-
-
-
 {% extends 'partials/body.html' %}
 {% load static %}
-
+{% block stylesheet %}
+<!-- DataTables -->
+<!--<link rel="stylesheet" href="{% static 'datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="{% static 'datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="{% static 'datatables-buttons/css/buttons.bootstrap4.min.css"> -->
+{% endblock stylesheet %}
 
 {% block contenido %}
-<!-- /.card -->
 <div class="card">
   <div class="card-header">
-    <h3 class="card-title">DataTable with default features</h3>
+    <h3 class="card-title">Tabla de productos</h3>
   </div>
   <!-- /.card-header -->
   <div class="card-body">
     <table id="tabla-general" class="table table-bordered table-striped">
-      
-      <thead >
-        <tr>
-          <th scope="col">Categoria</th>
-          <th scope="col">Presentacón</th>
-          <th scope="col">Marca</th>
-          <th scope="col">CodBarras</th>
-          <th scope="col">Nombre</th>
-          <th scope="col">Descripción</th>
-          <th scope="col">Estado</th>
-          <th scope="col">Accion</th>
-        </tr>
-      </thead>
-      <tbody>
+    <tr>
+        <th>Categoria</th>
+        <th>Marca</th>
+        <th>Presentación</th>
+        <th>CodBarras</th>
+        <th>Nombre</th>
+        <th>descripción</th>
+        <th>Estado</th>
+        <th>Accion</th>
 
-
-        {% for producto in productos %}
-        <tr>
-
-          {% if producto.estado != '3'  %}
-          <td>{{producto.categoria}}</td>
-          <td>{{producto.marca}}</td>
-          <td>{{producto.presentacion}}</td>
-          <td>{{producto.codigoBarras}}</td>
-          <td>{{producto.nombre}}</td>
-          <td>{{producto.descripcion}}</td>
-          <td>{{producto.estado}}</td>
-
-          
-            </form>
-
-        </div>
-    </td>
-      
-      {% endif %}
     </tr>
-    {% endfor %}
+</thead>
+    <tbody>
+
+    {% for  producto in productos  %}
+        <tr>
+            <td>{{producto.categoria}}</td>
+            <td>{{producto.marca}}</td>
+            <td>{{producto.presentacion}}</td>
+            <td>{{producto.codigoBarras}}</td>
+            <td>{{producto.nombre}}</td>
+            <td>{{producto.descripcion}}</td>
+            <td>{{producto.estado}}</td>
+            <td> </a>
+            <a class="btn btn-primary" href="{% url 'productos-editar' producto.id %}"><i class="fas fa-edit"></i></a>
+                <a class="btn btn-danger" href="{% url 'productos-eliminar' producto.id %}"><i class="fas fa-trash-alt"></i></a>
+              </td>
+        </tr>
+        {% endfor %}
+        <tr class="">
+    
+            <form action="" method='POST'>
+                
+        </form>
+    </tr>
+    </tbody>
+
+</table>
+    {% endblock contenido %} 
 
 
- 
 
-
-{% endblock contenido %}
+{% block javascript %}
+<!-- DataTables  & Plugins -->
+<script src="{% static 'datatables/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'datatables-bs4/js/dataTables.bootstrap4.min.js' %}"></script>
+<script src="{% static 'datatables-responsive/js/dataTables.responsive.min.js' %}"></script>
+<script src="{% static 'datatables-responsive/js/responsive.bootstrap4.min.js' %}"></script>
+<script src="{% static 'datatables-buttons/js/dataTables.buttons.min.js' %}"></script>
+<script src="{% static 'datatables-buttons/js/buttons.bootstrap4.min.js' %}"></script>
+<script src="{% static 'jszip/jszip.min.js' %}"></script>
+<script src="{% static 'pdfmake/pdfmake.min.js' %}"></script>
+<script src="{% static 'pdfmake/vfs_fonts.js' %}"></script>
+<script src="{% static 'datatables-buttons/js/buttons.html5.min.js' %}"></script>
+<script src="{% static 'datatables-buttons/js/buttons.print.min.js' %}"></script>
+<script src="{% static 'datatables-buttons/js/buttons.colVis.min.js' %}"></script>
+<!-- Page specific script -->
+<script>
+    $(function () {
+        $("#example1").DataTable({
+            "responsive": true, "lengthChange": false, "autoWidth": false,
+            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+        $('#example2').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": false,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+            "responsive": true,
+        });
+    });
+</script>
+{% endblock javascript %}
