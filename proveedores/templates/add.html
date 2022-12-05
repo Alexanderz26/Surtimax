@@ -2,7 +2,15 @@
   <div class="modal fade" {% block modal-id %} id="addModal" {% endblock modal-id %}  tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header bg-gradient-green">
+        
+        
+            
+        
+         
+         
+            
+         
+         {% block title-color %} <div  class="modal-header bg-success" > {% endblock title-color %}
           <h5 class="modal-title" id="addModalLabel">
             {% block modal-title %} <i class="fas fa-plus"></i>&nbsp;&nbsp; Agregar Proveedor {% endblock modal-title %}
           </h5>

@@ -5,32 +5,26 @@
 
 
 <!--Header-->
-<div class="card">
-  <div class="card-header">
-    <h3 class="card-title">Proveedores</h3>
-  </div>
+
   <div>
-    <td>
-      <a class="btn btn-success text-center" title="Agregar" data-bs-toggle="modal" data-bs-target="#addModal">
-        <i class="fas fa-plus"></i>
-      </a>
-    </td>
+    
   </div>
   
 <!--Tabla-->
 
-  <table class="table table-bordered table-striped" id="tabla-proveedores">
+  <table class="table table-bordered table-striped mb-0 mt-0 " id="tabla-proveedores" style="font-size: 14px;">
     <thead class="table-dark">
       <tr>
-        <th>Razón Social</th>
-        <th>Sector Comercial</th>
-        <th>Tipo de Documento</th>
-        <th>Número de documenton</th>
-        <th>Dirección</th>
-        <th>Teléfono</th>
-        <th>e-mail</th> 
-        <th>Editar</th>
-        <th>Eliminar</th>     
+        <th style="width: 20%;">Razón Social</th>
+        <th style="width: 10%;">Sector Comercial</th>
+        <th style="width: 5%;">Tipo de Documento</th>
+        <th style="width: 10%;">Número de documenton</th>
+        <th style="width: 10%;">Dirección</th>
+        <th style="width: 10%;">Teléfono</th>
+        <th style="width: 10%;">e-mail</th> 
+        <th style="width: 5%;">Crear</th>
+        <th style="width: 5%;">Editar</th>
+        <th style="width: 5%;">Eliminar</th>     
       </tr>
     </thead>
 
@@ -46,12 +40,17 @@
       <td>{{proveedor.telefono}}</td>          
       <td>{{proveedor.email}}</td>
       <td>
+        <a class="btn btn-success text-center" title="Agregar" data-bs-toggle="modal" data-bs-target="#addModal">
+          <i class="fas fa-plus"></i>
+        </a>
+      </td>
+      <td>
         <a class="btn btn-warning text-center" title="Editar"  data-bs-toggle="modal" data-bs-target="#editModal{{proveedor.pk}}">
           <i class="fas fa-pen"></i>
         </a>
       </td>
       <td>
-        <a class="btn btn-secondary text-center" title="Eliminar" >
+        <a class="btn btn-secondary text-center" title="Eliminar" data-bs-toggle="modal" data-bs-target="#deleteModal{{proveedor.pk}}">
           <i class="fas fa-trash-alt"></i>
         </a>
       </td>
@@ -60,6 +59,33 @@
     
     
     {% include 'edit.html' %}
+    <!-- Modal delete confirmation -->
+    <div class="modal fade" id="deleteModal{{proveedor.pk}}" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header bg-danger">
+            <h5 class="modal-title " id="deleteModalLabel"><i class="fas fa-trash-alt"></i>&nbsp;&nbsp; Eliminar Proveedor</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="text-center text-danger"><i class="far fa-times-circle fa-5x mb-4 mt-2"></i></div>
+              <div class="text-center text-danger">
+                <span class="">ESTAS SEGURO DE ELIMINAR ESTE PROVEEDOR?</span>
+                <div class="text-dark mt-3 mb-2">Proveedor:<strong>{{ proveedor.razonSocial }}</strong></div>                 
+                  
+                
+              </div>
+          </div>  
+          
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancelar</button>
+            <a href="/delete_proveedor/{{ proveedor.id }}" class="btn btn-danger btn-sm">Eliminar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
   {% endfor %}
   
   </table>  
