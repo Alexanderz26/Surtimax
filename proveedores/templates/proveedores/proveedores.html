@@ -16,7 +16,9 @@
       </a>
     </td>
   </div>
+  
 <!--Tabla-->
+
   <table class="table table-bordered table-striped" id="tabla-proveedores">
     <thead class="table-dark">
       <tr>
@@ -44,38 +46,24 @@
       <td>{{proveedor.telefono}}</td>          
       <td>{{proveedor.email}}</td>
       <td>
-        <a class="btn btn-warning text-center" title="Editar" href="#">
+        <a class="btn btn-warning text-center" title="Editar"  data-bs-toggle="modal" data-bs-target="#editModal{{proveedor.pk}}">
           <i class="fas fa-pen"></i>
         </a>
       </td>
       <td>
-        <a class="btn btn-secondary text-center" title="Eliminar" href="#">
+        <a class="btn btn-secondary text-center" title="Eliminar" >
           <i class="fas fa-trash-alt"></i>
         </a>
       </td>
       
     </tr>
-    <!--
-    <h1>Estas son los proveedores</h1>  
-
     
     
-    <div>
-      <p>
-        <h2>
-          {{proveedor.razonSocial}}
-        </h2>
-        <h1>
-          {{proveedor.documento}}
-        </h1>
-        <p>{{proveedor.sectorComercial}}</p>
-      </p>
-    </div>
-  -->
+    {% include 'edit.html' %}
   {% endfor %}
-    
+  
   </table>  
 </div>  
-  <p>aca deberia ir la info</p>
+  
 
 {% endblock contenido %}

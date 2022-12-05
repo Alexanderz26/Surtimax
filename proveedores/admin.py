@@ -5,7 +5,7 @@ from proveedores.models import Proveedor
 
 #agrega las funcionalidades de vista y buscador
 class ProveedorAdmin (admin.ModelAdmin):
-    list_display=("razonSocial", "tipoDocumento", "documento", "sectorComercial", "email")
+    list_display=("id", "razonSocial", "tipoDocumento", "documento", "sectorComercial", "email")
     search_fields=("razonSocial", "documento")
     list_filter=("sectorComercial",)
     list_per_page = 8

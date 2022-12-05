@@ -58,7 +58,7 @@ def edit_proveedor(request):
             proveedor.url= request.POST.get('url')
             proveedor.save()
             messages.success(request, "Proveedor Actualizado con éxito!")
-            return HttpResponseRedirect("/")
+            return HttpResponseRedirect("proveedores/")
 #Function to DELETE Proveedor
 def delete_proveedor(request, proveedor_id):
     proveedor = Proveedor.objects.get(id= proveedor_id)
