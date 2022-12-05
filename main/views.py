@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.defaults import page_not_found
 #from django.contrib import messages
+#from django.contrib.auth import logout
 from django.contrib.auth import logout
 
 #####elimina para logic####

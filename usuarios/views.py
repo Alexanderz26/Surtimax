@@ -4,7 +4,7 @@ from usuarios.forms import UsuarioForm, UsuarioUpdateForm
 from usuarios.models import Usuario
 from django.contrib import messages
 
-### logic
+### login
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required, permission_required
