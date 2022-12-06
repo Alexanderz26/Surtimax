@@ -38,6 +38,10 @@
 <script>
   $(function () {
     $("#tabla-proveedores").DataTable({
+      dom: 'Bfrtip',
+        language:{
+          url: "{% static 'datatables/datatables.spanish.json' %}"
+        },
       //dataTable configurations
       "responsive": true, "lengthChange": false, "autoWidth": true,"ordering": true,
       "searching": true, "info": true, "pageLength": 8,
