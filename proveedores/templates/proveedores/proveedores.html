@@ -6,8 +6,12 @@
 
 <!--Header-->
 
-  <div>
-    
+  <div class="d-flex justify-content-end mb-2">
+    <td>
+      <a class="btn btn-success text-center" title="Agregar" data-bs-toggle="modal" data-bs-target="#addModal">
+        <i class="fas fa-plus"></i> Crear
+      </a>
+    </td>
   </div>
   
 <!--Tabla-->
@@ -22,7 +26,7 @@
         <th style="width: 10%;">Dirección</th>
         <th style="width: 10%;">Teléfono</th>
         <th style="width: 10%;">e-mail</th> 
-        <th style="width: 5%;">Crear</th>
+        
         <th style="width: 5%;">Editar</th>
         <th style="width: 5%;">Eliminar</th>     
       </tr>
@@ -39,11 +43,7 @@
       <td>{{proveedor.direccion}}</td>
       <td>{{proveedor.telefono}}</td>          
       <td>{{proveedor.email}}</td>
-      <td>
-        <a class="btn btn-success text-center" title="Agregar" data-bs-toggle="modal" data-bs-target="#addModal">
-          <i class="fas fa-plus"></i>
-        </a>
-      </td>
+      
       <td>
         <a class="btn btn-warning text-center" title="Editar"  data-bs-toggle="modal" data-bs-target="#editModal{{proveedor.pk}}">
           <i class="fas fa-pen"></i>
