@@ -24,6 +24,15 @@ from django.conf.urls.static import static
 ############################################
 ####### Importes Logic #######
 from main.views import logout_user#,loggedIn
+from django.contrib.auth.views import LoginView as login
+from proveedores import views
+#modulos de andres leon
+#from compras import views
+
+
+
+
+from main.views import logout_user#,loggedIn
 #from django.contrib.auth.views import LoginView as login
 from django.contrib.auth import views as auth_views
 ############################################
@@ -34,12 +43,26 @@ urlpatterns = [
     # reemplazaa path('', inicio , name="inicio"),
     #reemplaza path('',login.as_view(),name='inicio'),
     path('adm/', inicioAdmin , name="inicio-admin"),
+    path('usuarios/', include('usuarios.urls'), name='usuarios'),
     path('usuarios/', include('usuarios.urls')),
     path('reportes/', reportes_informe,name="reportes_informe"),
     
     #path('loggedin/',loggedIn,name="inicio-sesion"),
     ####### logic con recuperar contraseña #####
     path('logout/',logout_user,name="logout"),
+    #path("select2/", include("django_select2.urls")),
+    
+    
+    #modulos de Andres leon
+    
+    
+    path('compras/', include('compras.urls'), name='compras'),
+    path('proveedores/', include('proveedores.urls'), name='proveedores'),
+    path('add_proveedor', views.add_proveedor, name="add_proveedor"),
+    path('edit_proveedor', views.edit_proveedor, name="edit_proveedor"),
+    
+    
+   
     path('',auth_views.LoginView.as_view(),name='inicio'),
     path('reiniciar/',auth_views.PasswordResetView.as_view(),name='pass_reset'),
     path('reiniciar/enviar',auth_views.PasswordResetDoneView.as_view(),name='pass_reset_done'),

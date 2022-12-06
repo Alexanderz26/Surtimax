@@ -1,4 +1,5 @@
 {% load static %}
+{% load %}
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
@@ -48,20 +49,20 @@
                         <i class="nav-icon fas fa-cogs"></i>
                         <p>
                             Mantenimiento
-                            <span class="badge badge-info right">2</span>
+                            <span class="badge badge-info right"></span>
                         </p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="pages/gallery.html" class="nav-link">
-                        <i class="nav-icon fas fa-box-open"></i>
+                    <a href="{% url 'usuarios' %}" class="nav-link">
+                        <i class="nav-icon fas fa-users"></i>
                         <p>
-                            Almacén
+                            Usuarios
                         </p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="pages/kanban.html" class="nav-link">
+                    <a href="{% url 'compras' %}" class="nav-link">
                         <i class="nav-icon fas fa-shopping-cart"></i>
                         <p>
                             Compras
@@ -69,7 +70,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="pages/kanban.html" class="nav-link">
+                    <a href="{% url 'compras' %}" class="nav-link">
                         <i class="nav-icon fas fa-chart-line"></i>
                         <p>
                             Ventas
@@ -85,10 +86,10 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="pages/kanban.html" class="nav-link">
-                        <i class="nav-icon fas fa-warehouse"></i>
+                    <a href="{% url 'proveedores' %}" class="nav-link">
+                        <i class="nav-icon fas fa-truck"></i>
                         <p>
-                            Inventario
+                            Proveedores
                         </p>
                     </a>
                 </li>
