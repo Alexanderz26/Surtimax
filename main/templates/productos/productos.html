@@ -8,13 +8,15 @@
 {% endblock stylesheet %}
 
 {% block contenido %}
-<div class="card">
+  <div class="container">
+  <div class="card">
   <div class="card-header">
-    <h3 class="card-title">Tabla de productos</h3>
+  <h3 class="card-title">Tabla de productos</h3>
   </div>
   <!-- /.card-header -->
   <div class="card-body">
-    <table id="tabla-general" class="table table-bordered table-striped">
+  <div class="container">
+  <table id="tabla-general" class="table table-bordered table-striped">
     <tr>
         <th>Categoria</th>
         <th>Marca</th>
@@ -25,9 +27,9 @@
         <th>Estado</th>
         <th>Accion</th>
 
-    </tr>
-</thead>
-    <tbody>
+     </tr>
+  </thead>
+<tbody>
 
     {% for  producto in productos  %}
         <tr>
@@ -41,7 +43,7 @@
             <td> </a>
             <a class="btn btn-primary" href="{% url 'productos-editar' producto.id %}"><i class="fas fa-edit"></i></a>
                 <a class="btn btn-danger" href="{% url 'productos-eliminar' producto.id %}"><i class="fas fa-trash-alt"></i></a>
-              </td>
+            </td>
         </tr>
         {% endfor %}
         <tr class="">
@@ -51,42 +53,38 @@
         </form>
     </tr>
     </tbody>
-
 </table>
     {% endblock contenido %} 
-
-
-
-{% block javascript %}
-<!-- DataTables  & Plugins -->
-<script src="{% static 'datatables/jquery.dataTables.min.js' %}"></script>
-<script src="{% static 'datatables-bs4/js/dataTables.bootstrap4.min.js' %}"></script>
-<script src="{% static 'datatables-responsive/js/dataTables.responsive.min.js' %}"></script>
-<script src="{% static 'datatables-responsive/js/responsive.bootstrap4.min.js' %}"></script>
-<script src="{% static 'datatables-buttons/js/dataTables.buttons.min.js' %}"></script>
-<script src="{% static 'datatables-buttons/js/buttons.bootstrap4.min.js' %}"></script>
-<script src="{% static 'jszip/jszip.min.js' %}"></script>
-<script src="{% static 'pdfmake/pdfmake.min.js' %}"></script>
-<script src="{% static 'pdfmake/vfs_fonts.js' %}"></script>
-<script src="{% static 'datatables-buttons/js/buttons.html5.min.js' %}"></script>
-<script src="{% static 'datatables-buttons/js/buttons.print.min.js' %}"></script>
-<script src="{% static 'datatables-buttons/js/buttons.colVis.min.js' %}"></script>
-<!-- Page specific script -->
-<script>
-    $(function () {
-        $("#example1").DataTable({
-            "responsive": true, "lengthChange": false, "autoWidth": false,
-            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-        $('#example2').DataTable({
-            "paging": true,
-            "lengthChange": false,
-            "searching": false,
-            "ordering": true,
-            "info": true,
-            "autoWidth": false,
-            "responsive": true,
+    {% block javascript %}
+    <!-- DataTables  & Plugins -->
+    <script src="{% static 'datatables/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'datatables-bs4/js/dataTables.bootstrap4.min.js' %}"></script>
+    <script src="{% static 'datatables-responsive/js/dataTables.responsive.min.js' %}"></script>
+    <script src="{% static 'datatables-responsive/js/responsive.bootstrap4.min.js' %}"></script>
+    <script src="{% static 'datatables-buttons/js/dataTables.buttons.min.js' %}"></script>
+    <script src="{% static 'datatables-buttons/js/buttons.bootstrap4.min.js' %}"></script>
+    <script src="{% static 'jszip/jszip.min.js' %}"></script>
+    <script src="{% static 'pdfmake/pdfmake.min.js' %}"></script>
+    <script src="{% static 'pdfmake/vfs_fonts.js' %}"></script>
+    <script src="{% static 'datatables-buttons/js/buttons.html5.min.js' %}"></script>
+    <script src="{% static 'datatables-buttons/js/buttons.print.min.js' %}"></script>
+    <script src="{% static 'datatables-buttons/js/buttons.colVis.min.js' %}"></script>
+    <!-- Page specific script -->
+    <script>
+        $(function () {
+            $("#example1").DataTable({
+                "responsive": true, "lengthChange": false, "autoWidth": false,
+                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+            });
         });
-    });
-</script>
-{% endblock javascript %}
+    </script>
+    {% endblock javascript %}
