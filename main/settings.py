@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     
     'compras',
     'proveedores',
+    'contacto',
     # pip install django-select2 pip install django-redis buscar en google git redis msi
     'django_select2',
     'usuarios'
