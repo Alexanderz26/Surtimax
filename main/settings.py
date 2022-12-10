@@ -150,7 +150,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.googlemail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'gchalapud@misena.edu.co'
-EMAIL_HOST_PASSWORD = 'oytdpupongonshvq' #generada desde la aplicacion google correo
+EMAIL_HOST_PASSWORD = 'nvfpkpyjwzjvvwms' #generada desde la aplicacion google correo
 EMAIL_USE_TLS = True
 
 LOGIN_URL= 'inicio'
