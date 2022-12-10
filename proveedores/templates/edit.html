@@ -1,0 +1,47 @@
+{% extends 'add.html' %}
+
+<!--Modal ID-->
+{% block modal-id %} id="editModal{{proveedor.pk}}" {% endblock modal-id %}
+
+<!--Modal Title-->
+{% block modal-title %} <i class="fas fa-edit"></i>&nbsp;&nbsp; Editar Proveedor {% endblock modal-title %}
+
+
+<!--Form Action-->
+{% block action %} action="/edit_proveedor" {% endblock action %}
+
+<!--Botton action-->
+{% block btn-action %}<i class="fas fa-server"></i>&nbsp;&nbsp; Guardar Cambios{% endblock btn-action %}
+
+
+<!--=============todos los inputs===============-->
+{% block Value_id %}
+<div class="input-group mb-3">
+    <span class="btn border-secondary bg-light side-label"><i class="fas fa-key"></i></span>
+    <input type="text" class="form-control" name="id" value="{{ proveedor.id }}"   readonly >
+</div>
+{% endblock Value_id %}
+<!--Razon Social-->
+{% block Value-razonSocial %} value="{{ proveedor.razonSocial }}" {% endblock Value-razonSocial %}
+<!--sectorComercial-->
+{% block Value-sectorComercial %} value="{{ proveedor.sectorComercial }}" {% endblock Value-sectorComercial %}
+
+<!--Tipo de documento-->
+{% block option %} 
+<option style="background-color: #d3d3d3; counter-reset:#111;"> {{ proveedor.tipoDocumento }} </option>
+ {% endblock option %}
+<!--Documento-->
+{% block Value-documento %} value="{{ proveedor.documento }}" {% endblock Value-documento %}
+<!--Direccion-->
+{% block Value-direccion %} value="{{ proveedor.direccion }}" {% endblock Value-direccion %}
+<!--Tipo de documento-->
+{% block Value-telefono %} value="{{ proveedor.telefono }}" {% endblock Value-telefono %}
+
+{% block Value-email %} value="{{ proveedor.email }}" {% endblock Value-email %}
+
+{% block Value-url %} value="{{ proveedor.url }}" {% endblock Value-url %}
+
+
+
+
+

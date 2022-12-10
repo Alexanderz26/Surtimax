@@ -42,7 +42,13 @@ INSTALLED_APPS = [
     'bootstrap5', #pip install bootstrap5
     'crispy_forms', #pip install crispy-forms
     'crispy_bootstrap5',#pip install crispy-bootstrap5
-    'usuarios',
+    
+    'compras',
+    'proveedores',
+    'contacto',
+    # pip install django-select2 pip install django-redis buscar en google git redis msi
+    'django_select2',
+    'usuarios'
 ]
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
@@ -72,6 +78,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'main.context_processors.sesion'
             ],
         },
     },
@@ -130,7 +137,22 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR,"static"),
 ]
 STATIC_ROOT="/static"
+
+MEDIA_URL= '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR,"media")
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.googlemail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'gchalapud@misena.edu.co'
+EMAIL_HOST_PASSWORD = 'nvfpkpyjwzjvvwms' #generada desde la aplicacion google correo
+EMAIL_USE_TLS = True
+
+LOGIN_URL= 'inicio'
+
+LOGIN_REDIRECT_URL= 'inicio-admin'

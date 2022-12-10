@@ -1,10 +1,12 @@
 {% load static %}
+
 <!-- jQuery -->
 <script src="{% static 'jquery/jquery.min.js' %}"></script>
 <!-- AdminLTE App -->
 <script src="{% static 'js/adminlte.js' %}"></script>
-
-
+<!-- toastr alert -->
+<script type="application/json" src="{% static 'toastr/toastr.js.map' %}"></script>
+<script type="text/javascript" src="{% static 'toastr/toastr.min.js' %}"></script>
 <!-- DataTables  & Plugins -->
 <script src="{% static 'datatables/jquery.dataTables.min.js' %}"></script>
 <script src="{% static 'datatables-bs4/js/dataTables.bootstrap4.min.js' %}"></script>
@@ -19,18 +21,39 @@
 <script src="{% static 'datatables-buttons/js/buttons.print.min.js' %}"></script>
 <script src="{% static 'datatables-buttons/js/buttons.colVis.min.js' %}"></script>
 <script>
- $(function () {
+  $(function () {
       $("#tabla-general").DataTable({
-       
+        dom: 'Bfrtip',
+        language:{
+          url: "{% static 'datatables/datatables.spanish.json' %}"
+        },
           "responsive": true, "lengthChange": false, "autoWidth": true,"ordering": true,
           "searching": true, "info": true,
-          "buttons": ["copy", "csv", "excel", "pdf", "print"],
-        //   "language": {
-        //     url: "{% static 'datatables/datatables.spanish.json' %}"
-        // },
+          "buttons": ["copy", "csv", "excel", "pdf", "print"]
       }).buttons().container().appendTo('#tabla-general_wrapper .col-md-6:eq(0)');
    
   });
 </script>
+<!--DataTable Proveedores-->
+<script>
+  $(function () {
+    $("#tabla-proveedores").DataTable({
+      dom: 'Bfrtip',
+        language:{
+          url: "{% static 'datatables/datatables.spanish.json' %}"
+        },
+      //dataTable configurations
+      "responsive": true, "lengthChange": false, "autoWidth": true,"ordering": true,
+      "searching": true, "info": true, "pageLength": 8,
+      "buttons": ["copy", "csv", "excel", "pdf", "print"],     
+
+    }
+
+    ).buttons().container().appendTo('#tabla-proveedores_wrapper .col-md-6:eq(0)');
+  });
+</script>
+
+
+<script src="{% static 'js/modal-status.js' %}"></script>
 {% block javascript %}
 {% endblock javascript %}
