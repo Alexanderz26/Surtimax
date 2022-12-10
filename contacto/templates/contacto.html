@@ -1,0 +1,41 @@
+{% extends 'partials/body.html' %}
+{% load static %}
+
+{% block contenido %}
+
+<form action="{% url 'add_proveedor' %}">
+    <div class="mb-3" method="POST" >
+
+      <label  class="form-label">Nombre</label>
+      <input type="text" class="form-control" id="nombre" >
+      
+    </div>
+    <div class="mb-3" >
+      <label for="exampleInputPassword1" class="form-label">Correo Electrónico</label>
+      <input type="email" class="form-control" id="exampleInputPassword1">
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Motivo de contacto</label>
+        <select id="disabledSelect" class="form-select">
+          <option class="" value="" hidden>Selecione motivo de contacto</option>
+          <option>Información General</option>
+          <option value="">Pedidos</option>
+          <option value="">Comentarios</option>
+          <option>PQRs</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Comentarios</label>
+
+        <textarea name="" id="" cols="30" rows="10" class="form-control"></textarea>
+        
+    </div>
+    
+    <div class="mb-3 form-check">
+      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+      <label class="form-check-label" for="exampleCheck1">Acepto recibir respuesta en mi correo electrónico </label>
+    </div>
+    <button type="submit" class="btn btn-success" >Enviar</button>
+  </form>
+
+{% endblock contenido %}
