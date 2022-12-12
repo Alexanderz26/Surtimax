@@ -22,7 +22,7 @@
     transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
     opacity: 1;
   }
-  80% {
+  80% {#c9303d 
     -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
     transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
   }

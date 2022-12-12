@@ -1,4 +1,94 @@
 {% extends 'partials/body.html' %}
-{% block contenido %}
+{% load static %}
 
+
+{% block contenido %}
+<!-- /.card -->
+<div class="card">
+  {% if perms.usuarios.add_usuario %}
+  <div class="card-header">
+    <h3 class="card-title">DataTable with default features</h3>
+  </div>
+  <!-- /.card-header -->
+  <div class="card-body">
+    <table id="tabla-general" class="table table-bordered table-striped">
+      
+      <thead >
+        <tr>
+          <th class="col text-center">Foto</th>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Tipo de Documento</th>
+          <th>Número de documenton</th>
+          <th>Fecha de nacimiento</th>
+          <th>Tipo de Genero</th>
+          <th>Dirección</th>
+          <th>Teléfono</th>
+          <th>Correo</th>
+          <th>Rol</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+
+
+        {% for usuario in usuarios %}
+        <tr>
+           
+          {% if usuario.estado == '1' %}
+          
+          
+          {% if usuario.foto.url != "" %}
+          <td class="align middle text-center"><img class="rounded-circle" src="{{ MEDIA_URL }}{{usuario.foto.url}}" alt="" width="50" height="50"></td>
+          {% else %}
+          <td class="align middle text-center"><img class="rounded-circle" src="/media/images/usuarios/default.jpg" alt="" width="50" height="50"></td>
+
+          {% endif %}
+            
+          <td>{{usuario.nombre}}</td>
+          <td>{{usuario.apellidos}}</td>
+          <td>{{usuario.tipoDocumento}}</td>
+          <td>{{usuario.documento}}</td>
+          <td>{{usuario.fecha_nacimiento}}</td>
+          <td>{{usuario.genero}}</td>
+          <td>{{usuario.direccion}}</td>
+          <td>{{usuario.telefono}}</td>
+          <td>{{usuario.email}}</td>
+          <td>{{usuario.rol}}</td>
+          <td>
+            <div class="row">
+                <form action="" method="POST" class="col-4">
+                    {% csrf_token %}
+                    <input type="hidden" name="pk" value="{{usuario.id}}">
+                    <button class="btn btn-primary m-1 p-1" name="form-editar">
+                        <i class="fas fa-edit"></i>
+                    </button>
+                </form>
+                <form action="" method="POST" class="col-4">
+                    {% csrf_token %}
+                    <input type="hidden" name="pk" value="{{usuario.id}}">
+                   
+                    <button class="btn btn-danger m-1 p-1" name="form-eliminar">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </form>
+
+            </div>
+        </td>
+          
+          {% endif %}
+        </tr>
+        {% endfor %}
+ 
+
+      </tbody>
+    </table>
+  
+  </div>
+  <!-- /.card-body -->
+  <input type="hidden" name="modal-status" id="modal-status" value="{{modal_status}}">
+</div>
+{% endif %}
 {% endblock contenido %}
+
+
